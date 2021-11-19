@@ -1,0 +1,39 @@
+{
+  "project_info": {
+    "project_number": "475093314294",
+    "project_id": "jci-nutz",
+    "storage_bucket": "jci-nutz.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:475093314294:android:65e06c69842a918bcfdad7",
+        "android_client_info": {
+          "package_name": "com.nutz.jci"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "475093314294-rqdfohne6mudahh5vjjlhies9rvaedcq.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyByK9sONj-M_wQVp9kZ6XTa_HOIDkwW0mc"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "475093314294-rqdfohne6mudahh5vjjlhies9rvaedcq.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
