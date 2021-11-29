@@ -59,12 +59,12 @@ class SponsorData {
                   _viewButton('our_sponser', '${snapshot.data[itemIndex].id}');
                 },
                 child: Container(
-                  height: 250,
-                  width: 250,
+                  height: 200,
+                  width: 200,
                   margin: EdgeInsets.all(10),
                   decoration: BoxDecoration(
                     border: Border.all(
-                      color: HexColor("ffffff"),
+                      color: Colors.transparent,
                       width: 1,
                     ),
                     borderRadius: BorderRadius.circular(10),
@@ -80,8 +80,9 @@ class SponsorData {
                 ),
               ),
               options: CarouselOptions(
-                height: 250,
+                height: 180,
                 initialPage: 0,
+                autoPlay: true,
               ),
             );
           }
@@ -109,7 +110,7 @@ class SponsorData {
               margin: EdgeInsets.all(10),
               decoration: BoxDecoration(
                 border: Border.all(
-                  color: HexColor("ffffff"),
+                  color: Colors.transparent,
                   width: 1,
                 ),
                 borderRadius: BorderRadius.circular(10),
@@ -138,8 +139,6 @@ class SponsorData {
                 ),
                 child: Image.network(
                   '${snapshot.data[0].logo}',
-                  // height: 40,
-                  // width: 200,
                   errorBuilder: (_, obj, err) {
                     return Utils.ImageNotFound();
                   },

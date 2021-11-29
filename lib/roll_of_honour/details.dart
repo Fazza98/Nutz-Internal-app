@@ -1,5 +1,6 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:jci/controllers/sponsorController.dart';
 import 'package:jci/services/roh_service.dart';
 import 'package:jci/utils/String.dart';
 import 'package:jci/widgets/custAppBar.dart';
@@ -17,6 +18,7 @@ class RohDetails extends StatefulWidget {
 class _RohDetailsState extends State<RohDetails> {
   var _getYear = Get.arguments;
 
+  var controller = Get.put(sponsorController());
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -49,12 +51,20 @@ class _RohDetailsState extends State<RohDetails> {
                                 snapshot.data[idx].name,
                                 snapshot.data[idx].role),
                             _space(20),
-                            SponsorData.sponserTitle("${JciString.powered_by}"),
+                            Visibility(
+                                visible: controller.getMainSponsorVisiblity(),
+                                child: SponsorData.sponserTitle(
+                                    "${JciString.powered_by}")),
                             _space(10),
-                            SponsorData.mainSponsor(context),
+                            Visibility(
+                                visible: controller.getMainSponsorVisiblity(),
+                                child: SponsorData.mainSponsor(context)),
                             _space(10),
-                            SponsorData.sponserTitle(
-                                '${JciString.co_powered_by}'),
+                            Visibility(
+                              visible: controller.getVisible(),
+                              child: SponsorData.sponserTitle(
+                                  '${JciString.co_powered_by}'),
+                            ),
                             SponsorData.otherSponsor(context),
                             _space(20)
                           ],

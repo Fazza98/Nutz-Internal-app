@@ -252,7 +252,7 @@ class _EventsState extends State<Events> {
         ),
         _space(5),
         Text(
-          title,
+          caps(title),
           style: TextStyle(
             fontFamily: "pop-med",
           ),

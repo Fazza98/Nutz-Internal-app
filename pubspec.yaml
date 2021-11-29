@@ -5,7 +5,7 @@ description: Powered by nutz
 # pub.dev using `pub publish`. This is preferred for private packages.
 publish_to: 'none' # Remove this line if you wish to publish to pub.dev
 
-version: 1.0.6
+version: 1.0.8
 
 environment:
   sdk: ">=2.12.0 <3.0.0"
@@ -15,6 +15,7 @@ dependencies:
   http: ^0.13.3
   photo_view: ^0.13.0
   syncfusion_flutter_calendar: ^19.3.44
+  page_transition: ^2.0.4
   get: ^4.1.4
   carousel_slider: ^4.0.0
   flutter_svg: ^0.22.0

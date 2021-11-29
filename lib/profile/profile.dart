@@ -10,6 +10,7 @@ import '../models/familyModel.dart';
 import '../models/businessModel.dart';
 import 'package:flutter_dotenv/flutter_dotenv.dart';
 import '../models/personalModel.dart';
+import 'package:jci/utils/String.dart';
 
 class Profile extends StatefulWidget {
   @override
@@ -263,7 +264,7 @@ class _ProfileState extends State<Profile> with TickerProviderStateMixin {
                 ),
                 SizedBox(height: 10),
                 Text(
-                  name,
+                  caps(name),
                   style: TextStyle(
                       color: Colors.white,
                       fontSize: 20,
@@ -271,7 +272,7 @@ class _ProfileState extends State<Profile> with TickerProviderStateMixin {
                 ),
                 SizedBox(height: 5),
                 Text(
-                  role,
+                  caps(role),
                   style: TextStyle(
                       color: Colors.white, fontSize: 16, fontFamily: 'pop-med'),
                 )
@@ -361,7 +362,7 @@ class _ProfileState extends State<Profile> with TickerProviderStateMixin {
 
   _custTile(String icon, String title) {
     return ListTile(
-      title: Text("$title"),
+      title: Text("${caps(title)}"),
       minLeadingWidth: 1,
       leading: SvgPicture.asset(
         'assets/icons/$icon',

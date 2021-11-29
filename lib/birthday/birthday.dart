@@ -92,7 +92,7 @@ class _BirthdayState extends State<Birthday> {
           int.parse(bday[2]), int.parse(bday[1]), int.parse(bday[0]), 10, 0, 0);
       final DateTime endTime = startTime.add(const Duration(hours: 1));
       meetings.add(Meeting(
-          '${_dob['user_name']}\'s birthday',
+          '${caps(_dob['user_name'])}\'s birthday',
           startTime,
           endTime,
           const Color(0xFF0F8644),

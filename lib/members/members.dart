@@ -71,23 +71,27 @@ class _MembersState extends State<Members> {
 
     _memberList.clear();
 
-    for (var members in _jsonData) {
-      if (ID[0] == "mem") {
-        MembersModel _mem = MembersModel(
-            id: '${members['id']}',
-            img: members['profile_pic'],
-            name: members['user_name'],
-            title: members['role'],
-            phone: members['contact']);
-        _memberList.add(_mem);
-      } else {
-        MembersModel _mem = MembersModel(
-            id: '${members['Member']['id']}',
-            img: members['Member']['profile_pic'],
-            name: members['Member']['user_name'],
-            title: members['Member']['role'],
-            phone: members['Member']['contact']);
-        _memberList.add(_mem);
+    print("${_responseData}");
+
+    if (_jsonData != "Not Found") {
+      for (var members in _jsonData) {
+        if (ID[0] == "mem") {
+          MembersModel _mem = MembersModel(
+              id: '${members['id']}',
+              img: members['profile_pic'],
+              name: members['user_name'],
+              title: members['role'],
+              phone: members['contact']);
+          _memberList.add(_mem);
+        } else {
+          MembersModel _mem = MembersModel(
+              id: '${members['id']}',
+              img: members['profile_pic'],
+              name: members['user_name'],
+              title: members['role'],
+              phone: members['contact']);
+          _memberList.add(_mem);
+        }
       }
     }
 
@@ -117,13 +121,7 @@ class _MembersState extends State<Members> {
             future: _loadMembersInfo(),
             builder: (BuildContext ctx, AsyncSnapshot snapshot) {
               if (snapshot.hasError) {
-                return Expanded(
-                  child: Center(
-                    child: Container(
-                      child: Lottie.asset("assets/lottie/no_data.json"),
-                    ),
-                  ),
-                );
+                return _nodatafound();
               } else {
                 if (snapshot.data == null &&
                     snapshot.connectionState == ConnectionState.waiting) {
@@ -134,13 +132,7 @@ class _MembersState extends State<Members> {
                   );
                 } else if (snapshot.data == null &&
                     snapshot.connectionState == ConnectionState.done) {
-                  return Expanded(
-                    child: Center(
-                      child: Container(
-                        child: Lottie.asset("assets/lottie/no_data.json"),
-                      ),
-                    ),
-                  );
+                  return _nodatafound();
                 } else {
                   return snapshot.data.length == 0
                       ? Expanded(
@@ -261,6 +253,16 @@ class _MembersState extends State<Members> {
     );
   }
 
+  Expanded _nodatafound() {
+    return Expanded(
+      child: Center(
+        child: Container(
+          child: Lottie.asset("assets/lottie/no_data.json"),
+        ),
+      ),
+    );
+  }
+
   Widget _memImg(String link) {
     return ClipRRect(
       borderRadius: BorderRadius.circular(10),
@@ -291,7 +293,7 @@ class _MembersState extends State<Members> {
 
   Widget _heading(String name) {
     return Text(
-      name,
+      caps(name),
       style: TextStyle(
         fontFamily: "pop-semibold",
         fontSize: 20,
@@ -301,7 +303,7 @@ class _MembersState extends State<Members> {
 
   Widget _subHeading(String name) {
     return Text(
-      name,
+      caps(name),
       style: TextStyle(
         fontFamily: "pop-med",
         fontSize: 14,

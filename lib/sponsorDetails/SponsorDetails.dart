@@ -1,13 +1,14 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
+import 'package:jci/utils/String.dart';
 import 'package:jci/widgets/custAppBar.dart';
 import 'dart:convert';
 import 'package:http/http.dart' as http;
 import 'package:get/get.dart';
 import 'package:flutter_dotenv/flutter_dotenv.dart';
+import 'package:url_launcher/url_launcher.dart';
 
 class SponsorDetails extends StatefulWidget {
-
   @override
   _SponsorDetailsState createState() => _SponsorDetailsState();
 }
@@ -22,13 +23,11 @@ class _SponsorDetailsState extends State<SponsorDetails> {
   Future<List<SponsorDetailsModel>> _getSponsorDetails() async {
     String u = dotenv.get("URL");
     Uri url = Uri.parse("$u/member/${ID[0]}");
-    var _response = await http.post(
-      url,
-      headers: <String, String>{ 'Content-Type': 'application/json; charset=UTF-8' },
-      body: jsonEncode(<String,String>{
-        "id": ID[1]
-      })
-    );
+    var _response = await http.post(url,
+        headers: <String, String>{
+          'Content-Type': 'application/json; charset=UTF-8'
+        },
+        body: jsonEncode(<String, String>{"id": ID[1]}));
 
     var _responseData = json.decode(_response.body);
 
@@ -42,8 +41,7 @@ class _SponsorDetailsState extends State<SponsorDetails> {
         mail: data['sponser_email'],
         location: data['sponser_location'],
         phone: data['sponser_contact'],
-        website: data['sponser_website']
-    );
+        website: data['sponser_website']);
 
     sponsorDetails.add(_details);
     return sponsorDetails;
@@ -56,75 +54,70 @@ class _SponsorDetailsState extends State<SponsorDetails> {
       body: SafeArea(
         child: SingleChildScrollView(
           child: FutureBuilder(
-            future: _getSponsorDetails(),
-            builder:(BuildContext ctx,AsyncSnapshot snapshot){
-              if(snapshot.hasError){
-                return Container();
-              }
-              else{
-                if(snapshot.data == null){
-                  return Container(
-                    height: MediaQuery.of(ctx).size.height/1.2,
-                    child: Center(
-                        child: CircularProgressIndicator()
-                    ),
-                  );
+              future: _getSponsorDetails(),
+              builder: (BuildContext ctx, AsyncSnapshot snapshot) {
+                if (snapshot.hasError) {
+                  return Container();
+                } else {
+                  if (snapshot.data == null) {
+                    return Container(
+                      height: MediaQuery.of(ctx).size.height / 1.2,
+                      child: Center(child: CircularProgressIndicator()),
+                    );
+                  } else {
+                    return Padding(
+                      padding: const EdgeInsets.all(20.0),
+                      child: Column(
+                        children: [
+                          _logo(snapshot.data[0].logo),
+                          _space(10),
+                          _companyDetails(snapshot.data[0].desc),
+                          _space(20),
+                          _mail(),
+                          _space(10),
+                          _mailId(snapshot.data[0].mail),
+                          _space(20),
+                          _locationIcon(),
+                          _space(10),
+                          _locationText(snapshot.data[0].location),
+                          _space(20),
+                          _phoneIcon(),
+                          _space(10),
+                          _phoneNumber(snapshot.data[0].phone),
+                          _space(20),
+                          _globeIcon(),
+                          _space(10),
+                          _website(snapshot.data[0].website),
+                          _space(20),
+                        ],
+                      ),
+                    );
+                  }
                 }
-                else{
-                  return Padding(
-                    padding: const EdgeInsets.all(20.0),
-                    child: Column(
-                      children: [
-                        _logo(snapshot.data[0].logo),
-                        _space(10),
-                        _companyDetails(snapshot.data[0].desc),
-                        _space(20),
-                        _mail(),
-                        _space(10),
-                        _mailId(snapshot.data[0].mail),
-                        _space(20),
-                        _locationIcon(),
-                        _space(10),
-                        _locationText(snapshot.data[0].location),
-                        _space(20),
-                        _phoneIcon(),
-                        _space(10),
-                        _phoneNumber(snapshot.data[0].phone),
-                        _space(20),
-                        _globeIcon(),
-                        _space(10),
-                        _website(snapshot.data[0].website),
-                        _space(20),
-                      ],
-                    ),
-                  );
-                }
-              }
-            }
-          ),
+              }),
         ),
       ),
     );
   }
 
-  Widget _logo(String url){
+  Widget _logo(String url) {
     return Center(
       child: Image.network(
-          url,
-          width: 200,
-          height: 200,
-          errorBuilder: (_,obj,err)=> Container(),
+        url,
+        width: 200,
+        height: 200,
+        errorBuilder: (_, obj, err) => Container(),
       ),
     );
   }
 
-  Widget _space(double h){
+  Widget _space(double h) {
     return SizedBox(height: h);
   }
 
-  Widget _companyDetails(String details){
+  Widget _companyDetails(String details) {
     return Text(
-      details,
+      caps(details),
       style: TextStyle(
         fontFamily: 'pop-med',
         fontSize: 18,
@@ -133,16 +126,16 @@ class _SponsorDetailsState extends State<SponsorDetails> {
     );
   }
 
-  Widget _mail(){
+  Widget _mail() {
     return SvgPicture.asset(
-        "assets/icons/mail_colored.svg",
+      "assets/icons/mail_colored.svg",
       width: 30,
     );
   }
 
-  Widget _mailId(id){
+  Widget _mailId(id) {
     return Text(
-      id,
+      caps(id),
       style: TextStyle(
         fontFamily: 'pop-med',
         fontSize: 18,
@@ -150,14 +143,31 @@ class _SponsorDetailsState extends State<SponsorDetails> {
     );
   }
 
-  Widget _locationIcon(){
+  Widget _locationIcon() {
     return SvgPicture.asset(
-        "assets/icons/location.svg",
+      "assets/icons/location.svg",
       width: 30,
     );
   }
 
-  Widget _locationText(id){
+  Widget _locationText(id) {
+    return Text(
+      caps(id),
+      style: TextStyle(
+        fontFamily: "pop-med",
+        fontSize: 18,
+      ),
+    );
+  }
+
+  Widget _phoneIcon() {
+    return SvgPicture.asset(
+      "assets/icons/phone_colored.svg",
+      width: 30,
+    );
+  }
+
+  Widget _phoneNumber(id) {
     return Text(
       id,
       style: TextStyle(
@@ -167,43 +177,37 @@ class _SponsorDetailsState extends State<SponsorDetails> {
     );
   }
 
-  Widget _phoneIcon(){
+  Widget _globeIcon() {
     return SvgPicture.asset(
-        "assets/icons/phone_colored.svg",
-      width: 30,
-    );
-  }
-
-  Widget _phoneNumber(id){
-    return Text(
-      id,
-      style: TextStyle(
-        fontFamily: "pop-med",
-        fontSize: 18,
-      ),
-    );
-  }
-
-  Widget _globeIcon(){
-    return SvgPicture.asset(
-        "assets/icons/globe_colored.svg",
+      "assets/icons/globe_colored.svg",
       width: 28,
     );
   }
 
-  Widget _website(id){
-    return Text(
-      id,
-      style: TextStyle(
-        fontFamily: "pop-med",
-        fontSize: 18,
+  Widget _website(String id) {
+    return GestureDetector(
+      onTap: () async {
+        var url =
+            id.contains("https") || id.contains("http") ? id : "https://$id";
+        if (await canLaunch("$url")) {
+          await launch('$url');
+        } else {
+          print('failed');
+        }
+      },
+      child: Text(
+        id,
+        style: TextStyle(
+          fontFamily: "pop-med",
+          fontSize: 18,
+        ),
       ),
     );
   }
 }
 
-class SponsorDetailsModel{
-  String logo,name,desc,location,phone,website,mail;
+class SponsorDetailsModel {
+  String logo, name, desc, location, phone, website, mail;
 
   SponsorDetailsModel({
     required this.logo,
@@ -213,5 +217,5 @@ class SponsorDetailsModel{
     required this.location,
     required this.phone,
     required this.website,
-});
+  });
 }

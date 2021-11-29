@@ -22,38 +22,82 @@ import 'members/members.dart';
 import 'package:flutter_dotenv/flutter_dotenv.dart';
 
 Future<void> _messageHandler(RemoteMessage message) async {
- // LocalNotificationService.display(message);
+  // LocalNotificationService.display(message);
 }
 
-void main() async{
-
+void main() async {
   WidgetsFlutterBinding.ensureInitialized();
   await Firebase.initializeApp();
   await dotenv.load(fileName: ".env");
 
   FirebaseMessaging.onBackgroundMessage(_messageHandler);
-  runApp(GetMaterialApp(
-    initialRoute: '/splash',
-    debugShowCheckedModeBanner: false,
-    routes: {
-      '/splash': (context)=> SplashScreen(),
-      '/': (context)=>Main(),
-      '/home':(context)=>Home(),
-      '/about':(context)=> About(),
-      '/sponsor':(context) => SponsorDetails(),
-      '/events': (context) => Events(),
-      '/eventsdetails':(context) => EventsDetails(),
-      '/members': (context) => Members(),
-      '/blood': (context) => BloodDonors(),
-      '/roh': (context) => RollOfHonour(),
-      '/roh_details': (context) => RohDetails(),
-      '/birthday':(context)=> Birthday(),
-      '/profile': (context) => Profile(),
-      '/imgView': (context) => ImageViewer(),
-      '/dashboard':(context) => Dashboard()
-    },
-    theme: ThemeData(fontFamily: "pop-reg"),
-  ));
+  runApp(
+    GetMaterialApp(
+      initialRoute: '/splash',
+      debugShowCheckedModeBanner: false,
+      getPages: [
+        GetPage(
+            name: '/splash',
+            page: () => SplashScreen(),
+            transition: Transition.leftToRight),
+        GetPage(
+            name: '/', page: () => Main(), transition: Transition.leftToRight),
+        GetPage(
+            name: '/home',
+            page: () => Home(),
+            transition: Transition.leftToRight),
+        GetPage(
+            name: '/about',
+            page: () => About(),
+            transition: Transition.leftToRight),
+        GetPage(
+            name: '/sponsor',
+            page: () => SponsorDetails(),
+            transition: Transition.leftToRight),
+        GetPage(
+            name: '/events',
+            page: () => Events(),
+            transition: Transition.leftToRight),
+        GetPage(
+            name: '/eventsdetails',
+            page: () => EventsDetails(),
+            transition: Transition.leftToRight),
+        GetPage(
+            name: '/members',
+            page: () => Members(),
+            transition: Transition.leftToRight),
+        GetPage(
+            name: '/blood',
+            page: () => BloodDonors(),
+            transition: Transition.leftToRight),
+        GetPage(
+            name: '/roh',
+            page: () => RollOfHonour(),
+            transition: Transition.leftToRight),
+        GetPage(
+            name: '/roh_details',
+            page: () => RohDetails(),
+            transition: Transition.leftToRight),
+        GetPage(
+            name: '/birthday',
+            page: () => Birthday(),
+            transition: Transition.leftToRight),
+        GetPage(
+            name: '/profile',
+            page: () => Profile(),
+            transition: Transition.leftToRight),
+        GetPage(
+            name: '/imgView',
+            page: () => ImageViewer(),
+            transition: Transition.leftToRight),
+        GetPage(
+            name: '/dashboard',
+            page: () => Dashboard(),
+            transition: Transition.leftToRight)
+      ],
+      theme: ThemeData(fontFamily: "pop-reg"),
+    ),
+  );
 }
 
 class Main extends StatefulWidget {
@@ -63,9 +107,7 @@ class Main extends StatefulWidget {
   _MainState createState() => _MainState();
 }
 
-
 class _MainState extends State<Main> {
-
   @override
   void initState() {
     super.initState();
@@ -73,11 +115,11 @@ class _MainState extends State<Main> {
     LocalNotificationService.initialize();
 
     FirebaseMessaging.instance.getInitialMessage().then((message) {
-      if(message != null){
-          if(message.data != null) {
-            var route = message.data["route"];
-            Get.toNamed('/$route');
-          }
+      if (message != null) {
+        if (message.data != null) {
+          var route = message.data["route"];
+          Get.toNamed('/$route');
+        }
       }
     });
 
@@ -89,28 +131,25 @@ class _MainState extends State<Main> {
 
     FirebaseMessaging.onMessage.listen((message) {
       var firebaseNotification = message.notification;
-      if(firebaseNotification != null){
-        LocalNotificationService.display(message,null,null);
+      if (firebaseNotification != null) {
+        LocalNotificationService.display(message, null, null);
       }
     });
 
     FirebaseMessaging.onMessageOpenedApp.listen((message) {
       var route = message.data['route'];
       var event_id = message.data['event_id'];
-      if(route == "events"){
-          Get.toNamed("/eventsdetails",arguments: ["${event_id}"]);
+      if (route == "events") {
+        Get.toNamed("/eventsdetails", arguments: ["${event_id}"]);
+      } else if (route == "birthday") {
+        Get.toNamed("/birthday");
       }
-      else if(route == "birthday"){
-          Get.toNamed("/birthday");
-      }
-
     });
-
-
   }
 
   void initDynamicLink() async {
-    final PendingDynamicLinkData? data = await FirebaseDynamicLinks.instance.getInitialLink();
+    final PendingDynamicLinkData? data =
+        await FirebaseDynamicLinks.instance.getInitialLink();
     var deepLink = data!.link;
     print('$deepLink');
   }
@@ -123,7 +162,3 @@ class _MainState extends State<Main> {
     );
   }
 }
-
-
-
-

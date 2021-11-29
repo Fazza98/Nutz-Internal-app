@@ -219,7 +219,7 @@ class _BloodDonorsState extends State<BloodDonors> {
 
   Widget _heading(String name) {
     return Text(
-      name,
+      caps(name),
       style: TextStyle(
         fontFamily: "pop-semibold",
         fontSize: 20,
@@ -229,7 +229,7 @@ class _BloodDonorsState extends State<BloodDonors> {
 
   Widget _subHeading(String name) {
     return Text(
-      name,
+      caps(name),
       style: TextStyle(
         fontFamily: "pop-med",
         fontSize: 14,

@@ -79,14 +79,10 @@ class _EventsDetailsState extends State<EventsDetails> {
               );
             } else if (snapshot.connectionState == ConnectionState.done &&
                 snapshot.data == null) {
-              return Center(
-                child: Lottie.asset("assets/lottie/no_data.json"),
-              );
+              return _nodatafound();
             } else {
               return snapshot.data!.length == 0
-                  ? Center(
-                      child: Lottie.asset("assets/lottie/no_data.json"),
-                    )
+                  ? _nodatafound()
                   : SingleChildScrollView(
                       child: Column(
                         crossAxisAlignment: CrossAxisAlignment.start,
@@ -190,6 +186,12 @@ class _EventsDetailsState extends State<EventsDetails> {
     );
   }
 
+  Center _nodatafound() {
+    return Center(
+      child: Lottie.asset("assets/lottie/no_data.json"),
+    );
+  }
+
   Widget _poster(BuildContext ctx, String _image) {
     return InkWell(
       onTap: () => Get.toNamed("/imgView", arguments: [_image]),
@@ -207,7 +209,7 @@ class _EventsDetailsState extends State<EventsDetails> {
     return Padding(
       padding: const EdgeInsets.all(20.0),
       child: Text(
-        title,
+        caps(title),
         style: TextStyle(
           fontFamily: "pop-semibold",
           fontSize: 20,
@@ -245,7 +247,7 @@ class _EventsDetailsState extends State<EventsDetails> {
     return Padding(
       padding: const EdgeInsets.all(20.0),
       child: Text(
-        details,
+        caps(details),
         style: TextStyle(
           fontFamily: "pop-med",
           fontSize: 18,
@@ -264,7 +266,7 @@ class _EventsDetailsState extends State<EventsDetails> {
         ),
         _space(10),
         Text(
-          title,
+          caps(title),
           style: TextStyle(fontFamily: "pop-med"),
         ),
       ],
