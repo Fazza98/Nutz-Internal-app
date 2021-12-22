@@ -87,7 +87,9 @@ class _BirthdayState extends State<Birthday> {
     final List<Meeting> meetings = <Meeting>[];
     for (var _dob in _dobRespData['response']['data']['info']) {
       final String dob = _dob['dob'];
-      final List<String> bday = dob.split('/');
+      final List<String> bday =
+          dob.contains("/") ? dob.split('/') : dob.split('-');
+
       final DateTime startTime = DateTime(
           int.parse(bday[2]), int.parse(bday[1]), int.parse(bday[0]), 10, 0, 0);
       final DateTime endTime = startTime.add(const Duration(hours: 1));

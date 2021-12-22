@@ -1,5 +1,5 @@
 import 'package:firebase_core/firebase_core.dart';
-import 'package:firebase_dynamic_links/firebase_dynamic_links.dart';
+// import 'package:firebase_dynamic_links/firebase_dynamic_links.dart';
 import 'package:firebase_messaging/firebase_messaging.dart';
 import 'package:flutter/material.dart';
 import 'package:jci/dashboard/dashboard.dart';
@@ -147,12 +147,12 @@ class _MainState extends State<Main> {
     });
   }
 
-  void initDynamicLink() async {
-    final PendingDynamicLinkData? data =
-        await FirebaseDynamicLinks.instance.getInitialLink();
-    var deepLink = data!.link;
-    print('$deepLink');
-  }
+  // void initDynamicLink() async {
+  //   final PendingDynamicLinkData? data =
+  //       await FirebaseDynamicLinks.instance.getInitialLink();
+  //   var deepLink = data!.link;
+  //   print('$deepLink');
+  // }
 
   @override
   Widget build(BuildContext context) {
