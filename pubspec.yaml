@@ -5,7 +5,7 @@ description: Powered by nutz
 # pub.dev using `pub publish`. This is preferred for private packages.
 publish_to: 'none' # Remove this line if you wish to publish to pub.dev
 
-version: 1.0.8
+version: 1.0.9
 
 environment:
   sdk: ">=2.12.0 <3.0.0"
@@ -14,23 +14,23 @@ dependencies:
   url_launcher: ^6.0.12
   http: ^0.13.3
   photo_view: ^0.13.0
-  syncfusion_flutter_calendar: ^19.3.44
+  syncfusion_flutter_calendar: ^19.4.38
   page_transition: ^2.0.4
   get: ^4.1.4
   carousel_slider: ^4.0.0
   flutter_svg: ^0.22.0
   hexcolor: ^2.0.5
   flutter_dotenv: ^5.0.2
-  firebase_core: ^1.7.0
-  firebase_messaging: ^10.0.8
-  firebase_dynamic_links: ^3.0.1
+  firebase_core: ^1.10.6
+  firebase_messaging: ^11.2.4
+  # firebase_dynamic_links: ^3.0.1
   lottie: ^1.2.1
   flutter_local_notifications: ^8.1.0
   open_file: ^3.2.1
   flowder: ^0.2.0
   path_provider: ^2.0.6
   permission_handler: ^8.2.5
-  app_settings: ^4.1.1
+  # app_settings: ^4.1.1
   flutter:
     sdk: flutter
 
