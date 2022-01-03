@@ -122,19 +122,15 @@ class SponsorData {
             );
           } else {
             visibleController.setMainSponsorVisible(true);
+
             return GestureDetector(
               onTap: () =>
                   {_viewButton('main_sponser', '${snapshot.data[0].id}')},
               child: Container(
                 width: 150,
-                height: 150,
+                height: 75,
                 margin: EdgeInsets.all(10),
                 decoration: BoxDecoration(
-                  color: Colors.white,
-                  border: Border.all(
-                    color: HexColor("ffffff"),
-                    width: 1,
-                  ),
                   borderRadius: BorderRadius.circular(10),
                 ),
                 child: Image.network(

@@ -298,7 +298,7 @@ class _HomeState extends State<Home> {
                 ],
               ),
             ),
-            _space(20),
+            _space(30),
             Visibility(
                 visible: controller.getMainSponsorVisiblity(),
                 child: SponsorData.sponserTitle("${JciString.powered_by}")),

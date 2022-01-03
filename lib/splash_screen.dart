@@ -27,25 +27,24 @@ class _SplashScreenState extends State<SplashScreen> {
             Expanded(
               child: Align(
                   alignment: Alignment.center,
-                  child: SvgPicture.asset("assets/images/jci_logo.svg")
-              ),
+                  child: SvgPicture.asset("assets/images/jci_logo.svg")),
             ),
             Align(
               child: Column(
                 children: [
                   Text(
-                    'Powered By',
+                    'Developed By',
                     style: TextStyle(
                       fontFamily: "pop-med",
                       fontSize: 11,
                     ),
                   ),
                   Container(
-                      margin: EdgeInsets.all(10),
-                      child: SvgPicture.asset(
-                          "assets/images/logo.svg",
-                        height: 30,
-                      )
+                    margin: EdgeInsets.all(10),
+                    child: SvgPicture.asset(
+                      "assets/images/logo.svg",
+                      height: Get.height * 0.05,
+                    ),
                   ),
                   SizedBox(
                     height: 50,
@@ -54,8 +53,7 @@ class _SplashScreenState extends State<SplashScreen> {
               ),
             ),
           ],
-        )
-    );
+        ));
   }
 
   @override

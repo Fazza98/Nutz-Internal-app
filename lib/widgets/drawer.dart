@@ -11,100 +11,123 @@ class drawer extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return SizedBox(
-      width: MediaQuery.of(context).size.width * 0.8,
+      width: Get.width * 0.8,
       child: Drawer(
-        child: ListView(
+        child: Column(
           children: [
-            DrawerHeader(
-                child: Padding(
-                padding: EdgeInsets.all(20),
-                child: Container(
-                  height: 40,
-                  width: 40,
-                  child: SvgPicture.asset(
-                    "assets/images/jci_logo.svg",
+            Expanded(
+              child: ListView(
+                shrinkWrap: true,
+                children: [
+                  DrawerHeader(
+                      child: Padding(
+                    padding: EdgeInsets.all(20),
+                    child: Container(
+                      height: 40,
+                      width: 40,
+                      child: SvgPicture.asset(
+                        "assets/images/jci_logo.svg",
+                      ),
+                    ),
+                  )),
+                  // about
+                  ListTile(
+                    title: _listTile(titles.about),
+                    minLeadingWidth: 1,
+                    leading: _about,
+                    onTap: () {
+                      Get.back();
+                      Get.toNamed("/about");
+                    },
                   ),
-                ),
-              )
+                  // events
+                  ListTile(
+                      title: _listTile(titles.event),
+                      minLeadingWidth: 1,
+                      leading: _events,
+                      onTap: () {
+                        Get.back();
+                        Get.toNamed("/events");
+                      }),
+                  // board member
+                  ListTile(
+                    title: _listTile(titles.board_members),
+                    minLeadingWidth: 1,
+                    leading: _board_member,
+                    onTap: () {
+                      Get.back();
+                      Get.toNamed("/members", arguments: ["bm"]);
+                    },
+                  ),
+                  // past president
+                  ListTile(
+                    title: _listTile(titles.green_channel),
+                    minLeadingWidth: 1,
+                    leading: _dashboard,
+                    onTap: () {
+                      Get.back();
+                      Get.toNamed("/dashboard", arguments: ["pp"]);
+                    },
+                  ),
+                  // member
+                  ListTile(
+                    title: _listTile(titles.members),
+                    minLeadingWidth: 1,
+                    leading: _members,
+                    onTap: () {
+                      Get.back();
+                      Get.toNamed("/members", arguments: ['mem']);
+                    },
+                  ),
+                  // roll of honour
+                  ListTile(
+                    title: _listTile(titles.roh),
+                    minLeadingWidth: 1,
+                    leading: _roll_of_honour,
+                    onTap: () {
+                      Get.back();
+                      Get.toNamed("/roh");
+                    },
+                  ),
+                  // birthday
+                  ListTile(
+                    title: _listTile(titles.birthday),
+                    minLeadingWidth: 1,
+                    leading: _birthday,
+                    onTap: () {
+                      Get.back();
+                      Get.toNamed("/birthday");
+                    },
+                  ),
+                  // blood donors
+                  ListTile(
+                    title: _listTile(titles.blood_donors),
+                    minLeadingWidth: 1,
+                    leading: _blood,
+                    onTap: () {
+                      Get.back();
+                      Get.toNamed("/blood");
+                    },
+                  )
+                ],
+              ),
             ),
-            // about
-            ListTile(
-              title: _listTile(titles.about),
-              minLeadingWidth: 1,
-              leading: _about,
-              onTap: () {
-                Get.back();
-                Get.toNamed("/about");
-              },
+            Text(
+              'Developed by',
+              style: TextStyle(
+                fontFamily: "pop-med",
+                fontSize: 11,
+              ),
             ),
-            // events
-            ListTile(
-                title: _listTile(titles.event),
-                minLeadingWidth: 1,
-                leading: _events,
-                onTap: () {
-                  Get.back();
-                  Get.toNamed("/events");
-                }),
-            // board member
-            ListTile(
-              title: _listTile(titles.board_members),
-              minLeadingWidth: 1,
-              leading: _board_member,
-              onTap: () {
-                Get.back();
-                Get.toNamed("/members", arguments: ["bm"]);
-              },
+            Container(
+              margin: EdgeInsets.all(10),
+              child: SvgPicture.asset(
+                "assets/images/logo.svg",
+                height: Get.height * 0.05,
+              ),
             ),
-            // past president
-            ListTile(
-              title: _listTile(titles.green_channel),
-              minLeadingWidth: 1,
-              leading: _dashboard,
-              onTap: () {
-                Get.back();
-                Get.toNamed("/dashboard", arguments: ["pp"]);
-              },
-            ),
-            // member
-            ListTile(
-              title: _listTile(titles.members),
-              minLeadingWidth: 1,
-              leading: _members,
-              onTap: () {
-                Get.back();
-                Get.toNamed("/members", arguments: ['mem']);
-              },
-            ),
-            // roll of honour
-            ListTile(
-              title: _listTile(titles.roh),
-              minLeadingWidth: 1,
-              leading: _roll_of_honour,
-              onTap: () {
-                Get.back();
-                Get.toNamed("/roh");
-              },
-            ),
-            // birthday
-            ListTile(
-              title: _listTile(titles.birthday),
-              minLeadingWidth: 1,
-              leading: _birthday,
-              onTap: () {
-                Get.back();
-                Get.toNamed("/birthday");
-              },
-            ),
-            // blood donors
-            ListTile(
-              title: _listTile(titles.blood_donors),
-              minLeadingWidth: 1,
-              leading: _blood,
-              onTap: () {
-                Get.back();
-                Get.toNamed("/blood");
-              },
+            SizedBox(
+              height: Get.height * 0.04,
             )
           ],
         ),
@@ -146,7 +169,6 @@ class drawer extends StatelessWidget {
     'assets/icons/roll_of_honour_colored.svg',
     width: _svgWidth,
   );
-
 
   final Widget _events = SvgPicture.asset(
     "assets/icons/event_colored.svg",
