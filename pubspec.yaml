@@ -25,7 +25,7 @@ dependencies:
   firebase_messaging: ^11.2.4
   # firebase_dynamic_links: ^3.0.1
   lottie: ^1.2.1
-  flutter_local_notifications: ^8.1.0
+  flutter_local_notifications: ^9.2.0
   open_file: ^3.2.1
   flowder: ^0.2.0
   path_provider: ^2.0.6

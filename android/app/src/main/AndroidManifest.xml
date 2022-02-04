@@ -7,9 +7,10 @@
     <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
     <uses-permission android:name="android.permission.RECEIVE_BOOT_COMPLETED" />
    <application
-        android:label="Jci Greencity"
+        android:label="Jci Erode Greencity"
         android:icon="@mipmap/jci_logo">
         <activity
+            android:exported="true"
             android:requestLegacyExternalStorage="true"
             android:name=".MainActivity"
             android:launchMode="singleTop"
@@ -20,7 +21,7 @@
             android:windowSoftInputMode="adjustResize"
             android:showWhenLocked="true"
             android:turnScreenOn="true"
-            android:exported="true"
+            
             >
             <meta-data
               android:name="io.flutter.embedding.android.NormalTheme"
@@ -53,6 +54,11 @@
         <meta-data
             android:name="flutterEmbedding"
             android:value="2" />
+
+        <service
+            android:name="com.dexterous.flutterlocalnotifications.ForegroundService"        
+            android:exported="false"
+            android:stopWithTask="false"/>
 
     </application>
 </manifest>

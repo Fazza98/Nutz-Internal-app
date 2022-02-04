@@ -32,7 +32,7 @@ class LocalNotificationService {
           android: AndroidNotificationDetails(
             "JciGreenCity", //id
             "JciGreenCity channel",
-            "Sponsored by Nutz",
+
             importance: Importance.max,
             priority: Priority.high,
             playSound: true,
@@ -53,7 +53,7 @@ class LocalNotificationService {
           android: AndroidNotificationDetails(
             "JciGreenCity", //id
             "JciGreenCity channel",
-            "Sponsored by Nutz",
+
             importance: Importance.max,
             priority: Priority.high,
             showProgress: true,

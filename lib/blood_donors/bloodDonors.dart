@@ -1,4 +1,3 @@
-import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:jci/models/donorsModel.dart';
 import 'package:jci/controllers/sponsorController.dart';
@@ -133,32 +132,35 @@ class _BloodDonorsState extends State<BloodDonors> {
       margin: EdgeInsets.only(bottom: 15),
       color: Utils.darkBlue,
       height: 250,
-      child: Column(
-        mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-        children: [
-          Expanded(
-            child: Row(
-              mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+      child: SingleChildScrollView(
+        scrollDirection: Axis.horizontal,
+        child: Column(
+          mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+          children: [
+            Row(
               children: [
                 _bloodGroup("A+"),
                 _bloodGroup("B+"),
                 _bloodGroup("O+"),
                 _bloodGroup("AB+"),
+                _bloodGroup("A1+"),
+                _bloodGroup("A1B+"),
+                _bloodGroup("A2B+"),
               ],
             ),
-          ),
-          Expanded(
-            child: Row(
-              mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+            Row(
               children: [
                 _bloodGroup("A-"),
                 _bloodGroup("B-"),
                 _bloodGroup("O-"),
                 _bloodGroup("AB-"),
+                _bloodGroup("A2+"),
+                _bloodGroup("A1B-"),
+                _bloodGroup("A2B-"),
               ],
             ),
-          ),
-        ],
+          ],
+        ),
       ),
     );
   }
@@ -172,6 +174,7 @@ class _BloodDonorsState extends State<BloodDonors> {
         });
       },
       child: Container(
+        margin: EdgeInsets.only(left: 20, right: 10),
         alignment: Alignment.center,
         decoration: BoxDecoration(
           color: selectedGroup == type ? HexColor(lightColor) : Colors.white,
