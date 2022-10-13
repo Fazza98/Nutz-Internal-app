@@ -265,9 +265,11 @@ class _EventsDetailsState extends State<EventsDetails> {
           width: 18,
         ),
         _space(10),
-        Text(
-          caps(title),
-          style: TextStyle(fontFamily: "pop-med"),
+        Flexible(
+          child: Text(
+            caps(title),
+            style: TextStyle(fontFamily: "pop-med"),
+          ),
         ),
       ],
     );

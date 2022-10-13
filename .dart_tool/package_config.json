@@ -32,6 +32,12 @@
       "languageVersion": "2.12"
     },
     {
+      "name": "change_app_package_name",
+      "rootUri": "file:///Users/nutzmacair/development/flutter/.pub-cache/hosted/pub.dartlang.org/change_app_package_name-1.1.0",
+      "packageUri": "lib/",
+      "languageVersion": "2.12"
+    },
+    {
       "name": "characters",
       "rootUri": "file:///Users/nutzmacair/development/flutter/.pub-cache/hosted/pub.dartlang.org/characters-1.2.1",
       "packageUri": "lib/",
@@ -512,7 +518,7 @@
       "languageVersion": "2.12"
     }
   ],
-  "generated": "2022-10-13T06:27:29.600550Z",
+  "generated": "2022-10-13T07:55:05.234260Z",
   "generator": "pub",
   "generatorVersion": "2.18.2"
 }

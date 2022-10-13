@@ -190,7 +190,7 @@ class _EventsState extends State<Events> {
                                             },
                                           )),
                                       _space(10),
-                                      Expanded(
+                                      Flexible(
                                         child: Column(
                                           crossAxisAlignment:
                                               CrossAxisAlignment.start,
@@ -202,9 +202,7 @@ class _EventsState extends State<Events> {
                                                 fontSize: 18,
                                               ),
                                             ),
-                                            SizedBox(
-                                              height: 10,
-                                            ),
+                                            SizedBox(height: 10),
                                             Row(
                                               mainAxisAlignment:
                                                   MainAxisAlignment
@@ -217,11 +215,10 @@ class _EventsState extends State<Events> {
                                                     snapshot.data[index].time),
                                               ],
                                             ),
-                                            SizedBox(
-                                              height: 10,
+                                            SizedBox(height: 10),
+                                            _custAddressTile(
+                                              snapshot.data[index].location,
                                             ),
-                                            _custTile("location.svg",
-                                                snapshot.data[index].location),
                                           ],
                                         ),
                                       ),
@@ -253,10 +250,33 @@ class _EventsState extends State<Events> {
         _space(5),
         Text(
           caps(title),
+          overflow: TextOverflow.ellipsis,
           style: TextStyle(
             fontFamily: "pop-med",
           ),
           maxLines: 1,
+        ),
+      ],
+    );
+  }
+
+  Widget _custAddressTile(String title) {
+    return Row(
+      children: [
+        SvgPicture.asset(
+          "assets/icons/location.svg",
+          width: 18,
+        ),
+        _space(5),
+        Flexible(
+          child: Text(
+            caps(title),
+            overflow: TextOverflow.ellipsis,
+            style: TextStyle(
+              fontFamily: "pop-med",
+            ),
+            maxLines: 1,
+          ),
         ),
       ],
     );

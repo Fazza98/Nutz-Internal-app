@@ -5,7 +5,7 @@ description: Powered by nutz
 # pub.dev using `pub publish`. This is preferred for private packages.
 publish_to: "none" # Remove this line if you wish to publish to pub.dev
 
-version: 1.0.12
+version: 1.0.13
 
 environment:
   sdk: ">=2.12.0 <3.0.0"
@@ -39,6 +39,7 @@ dependencies:
 dev_dependencies:
   flutter_test:
     sdk: flutter
+  change_app_package_name: ^1.1.0
 
 # The following section is specific to Flutter.
 flutter:
