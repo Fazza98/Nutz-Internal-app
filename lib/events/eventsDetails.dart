@@ -282,7 +282,7 @@ class _EventsDetailsState extends State<EventsDetails> {
   }
 
   Widget CustomContainer() {
-    WidgetsBinding.instance!.addPostFrameCallback((timeStamp) {
+    WidgetsBinding.instance.addPostFrameCallback((timeStamp) {
       eventController.setVisible(false);
     });
     return Container();
