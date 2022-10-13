@@ -71,8 +71,6 @@ class _MembersState extends State<Members> {
 
     _memberList.clear();
 
-    print("${_responseData}");
-
     if (_jsonData != "Not Found") {
       for (var members in _jsonData) {
         if (ID[0] == "mem") {
@@ -156,10 +154,14 @@ class _MembersState extends State<Members> {
                                   return Column(
                                     children: [
                                       GestureDetector(
-                                        onTap: () => Get.toNamed('/profile',
+                                        onTap: () {
+                                          Get.toNamed(
+                                            '/profile',
                                             arguments: [
-                                              snapshot.data[index].id
-                                            ]),
+                                              mem.id,
+                                            ],
+                                          );
+                                        },
                                         child: Container(
                                           padding: EdgeInsets.all(15),
                                           margin: EdgeInsets.fromLTRB(
@@ -210,8 +212,12 @@ class _MembersState extends State<Members> {
                                   );
                                 } else {
                                   return GestureDetector(
-                                    onTap: () => Get.toNamed('/profile',
-                                        arguments: [snapshot.data[index].id]),
+                                    onTap: () {
+                                      Get.toNamed(
+                                        '/profile',
+                                        arguments: [mem.id],
+                                      );
+                                    },
                                     child: Container(
                                       padding: EdgeInsets.all(15),
                                       margin:

@@ -192,7 +192,7 @@ class _SponsorDetailsState extends State<SponsorDetails> {
         if (await canLaunch("$url")) {
           await launch('$url');
         } else {
-          print('failed');
+          // print('failed');
         }
       },
       child: Text(

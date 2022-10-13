@@ -222,7 +222,6 @@ class _DashboardState extends State<Dashboard> {
   void _download(var link, var filename) async {
     Get.back();
     var dir = await getApplicationDocumentsDirectory();
-    print(dir.path);
     var path = "/storage/emulated/0/Download";
     var options = DownloaderUtils(
       progressCallback: (current, total) {

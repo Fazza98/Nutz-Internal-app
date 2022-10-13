@@ -14,7 +14,6 @@ class rohService {
         body: jsonEncode(<String, String>{"year": "$year"}));
     var _responseData = json.decode(_resp.body);
 
-    print(_responseData);
     List<RohModel> memberList = [];
 
     for (var members in _responseData['response']['data']['info']) {

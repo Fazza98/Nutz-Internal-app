@@ -9,7 +9,7 @@ class HomeService {
     var response = await http.get(event_images);
 
     var _responseData = json.decode(response.body);
-    print(_responseData);
+
     List<String> _imageList = [];
     if (_responseData != null) {
       for (var imgs in _responseData['response']['data']['info']) {

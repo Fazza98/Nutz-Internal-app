@@ -124,8 +124,9 @@ class SponsorData {
             visibleController.setMainSponsorVisible(true);
 
             return GestureDetector(
-              onTap: () =>
-                  {_viewButton('main_sponser', '${snapshot.data[0].id}')},
+              onTap: () => {
+                _viewButton('main_sponser', '${snapshot.data[0].id}'),
+              },
               child: Container(
                 width: 150,
                 height: 75,

@@ -247,7 +247,7 @@ class _EventsState extends State<Events> {
     return Row(
       children: [
         SvgPicture.asset(
-          "assets/icons/${icon}",
+          "assets/icons/$icon",
           width: 18,
         ),
         _space(5),

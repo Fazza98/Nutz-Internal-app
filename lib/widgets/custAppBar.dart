@@ -8,7 +8,7 @@ class CustAppBar {
 
   CustAppBar(this.appBarTitle);
 
-  AppBar initAppBar(){
+  AppBar initAppBar() {
     return AppBar(
       title: Row(
         mainAxisAlignment: MainAxisAlignment.spaceBetween,
@@ -16,8 +16,7 @@ class CustAppBar {
           Text(
             appBarTitle,
             style: TextStyle(
-              fontSize: 18,
-                fontFamily: "pop-semibold", color: Colors.black),
+                fontSize: 18, fontFamily: "pop-semibold", color: Colors.black),
           ),
           Row(
             children: [
@@ -25,13 +24,15 @@ class CustAppBar {
                 'JCI ',
                 style: TextStyle(
                     fontSize: 18,
-                    fontFamily: "pop-semibold", color: HexColor(lightBlue)),
+                    fontFamily: "pop-semibold",
+                    color: HexColor(lightBlue)),
               ),
               Text(
                 'Green City',
                 style: TextStyle(
                     fontSize: 18,
-                    fontFamily: "pop-semibold", color: HexColor(darkBlue)),
+                    fontFamily: "pop-semibold",
+                    color: HexColor(darkBlue)),
               ),
               SizedBox(width: 10)
             ],
@@ -41,6 +42,42 @@ class CustAppBar {
       backgroundColor: Colors.white,
       iconTheme: IconThemeData(color: Colors.black),
       titleSpacing: 0,
+    );
+  }
+
+  AppBar loadingAppBar() {
+    return AppBar(
+      title: Row(
+        mainAxisAlignment: MainAxisAlignment.spaceBetween,
+        children: [
+          Text(
+            appBarTitle,
+            style: TextStyle(
+                fontSize: 18, fontFamily: "pop-semibold", color: Colors.black),
+          ),
+          Row(
+            children: [
+              Text(
+                'JCI ',
+                style: TextStyle(
+                    fontSize: 18,
+                    fontFamily: "pop-semibold",
+                    color: HexColor(lightBlue)),
+              ),
+              Text(
+                'Green City',
+                style: TextStyle(
+                    fontSize: 18,
+                    fontFamily: "pop-semibold",
+                    color: HexColor(darkBlue)),
+              ),
+              SizedBox(width: 10)
+            ],
+          )
+        ],
+      ),
+      backgroundColor: Colors.white,
+      iconTheme: IconThemeData(color: Colors.black),
     );
   }
 }

@@ -22,7 +22,6 @@ class LocalNotificationService {
   static Future<dynamic> onDidReceiveLocalNotification(
       int id, title, body, payload) async {
     // display a dialog with the notification details, tap ok to go to another page
-    print('$body');
   }
 
   static void display(var message, var progress, var name) async {
@@ -68,7 +67,6 @@ class LocalNotificationService {
             payload: name);
       }
     } on Exception catch (e) {
-      // TODO
       // print(e);
     }
   }

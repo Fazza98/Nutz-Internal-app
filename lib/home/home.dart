@@ -4,6 +4,7 @@ import 'package:flutter_svg/flutter_svg.dart';
 import 'package:hexcolor/hexcolor.dart';
 import 'package:carousel_slider/carousel_slider.dart';
 import 'package:jci/controllers/sponsorController.dart';
+import 'package:jci/home/SponsorModel.dart';
 import 'package:jci/services/homeService.dart';
 import 'package:jci/utils/String.dart';
 import 'package:jci/widgets/custAppBar.dart';
@@ -11,6 +12,8 @@ import 'package:jci/widgets/drawer.dart';
 import 'package:jci/widgets/sponsorData.dart';
 import 'package:get/get.dart';
 import 'package:jci/widgets/titles.dart';
+
+import '../services/sponser_service.dart';
 
 class Home extends StatefulWidget {
   @override
@@ -20,8 +23,49 @@ class Home extends StatefulWidget {
 class _HomeState extends State<Home> {
   var controller = Get.put(sponsorController());
 
+  var loadingFlag = 0;
+  var isLoading = true;
+
+  @override
+  void initState() {
+    super.initState();
+
+    getSponsorData();
+  }
+
+  getSponsorData() async {
+    List<SponsorModel> coSponsor = await SponsorService.getOurSponserData();
+    List<SponsorModel> poweredBy = await SponsorService.getSponserData();
+
+    if (coSponsor.isNotEmpty) {
+      loadingFlag++;
+      controller.setVisible(true);
+    } else {
+      loadingFlag++;
+      controller.setVisible(false);
+    }
+
+    if (poweredBy.isNotEmpty) {
+      loadingFlag++;
+      controller.setMainSponsorVisible(true);
+    } else {
+      loadingFlag++;
+      controller.setMainSponsorVisible(false);
+    }
+
+    if (loadingFlag != 0) {
+      setState(() {
+        isLoading = false;
+      });
+    }
+  }
+
   @override
   Widget build(BuildContext context) {
+    return isLoading ? _loading() : _home(context);
+  }
+
+  Scaffold _home(BuildContext context) {
     return Scaffold(
       appBar: CustAppBar(titles.home).initAppBar(),
       body: SingleChildScrollView(
@@ -43,6 +87,7 @@ class _HomeState extends State<Home> {
                     snapshot.data == null) {
                   return Container();
                 } else {
+                  print(snapshot.data);
                   return snapshot.data.length == 0
                       ? Container()
                       : CarouselSlider.builder(
@@ -330,4 +375,13 @@ class _HomeState extends State<Home> {
   }
 
   Widget _dummy() => Expanded(child: Text(""));
+}
+
+Scaffold _loading() {
+  return Scaffold(
+    appBar: CustAppBar(titles.home).loadingAppBar(),
+    body: Center(
+      child: CircularProgressIndicator(),
+    ),
+  );
 }
