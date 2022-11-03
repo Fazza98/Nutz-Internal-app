@@ -28,9 +28,9 @@ class _ProfileState extends State<Profile> with TickerProviderStateMixin {
   String PHONE = "null";
   String PROFILE_PIC = 'NULL';
 
-  final _darkblue = '23346B';
-  final _lightBlue = '24B9EC';
-
+  final _white = '#f7f2f2';
+  final _black = '000000';
+  final _green = '#33CC66';
   late TabController _tabController;
 
   List<Tab> list = [];
@@ -109,8 +109,8 @@ class _ProfileState extends State<Profile> with TickerProviderStateMixin {
   void initState() {
     super.initState();
     list.add(_personalTap());
-    list.add(_businessTap());
-    list.add(_familyTap());
+    // list.add(_businessTap());
+    // list.add(_familyTap());
     _tabController = TabController(length: list.length, vsync: this);
   }
 
@@ -140,37 +140,51 @@ class _ProfileState extends State<Profile> with TickerProviderStateMixin {
                           return _profilePic("$PROFILE_PIC", "$NAME", "$ROLE");
                         }
                       }),
+
                   Container(
                     decoration:
-                        BoxDecoration(color: HexColor(_darkblue), boxShadow: [
+                        BoxDecoration(color: HexColor(_white), boxShadow: [
                       BoxShadow(
                         color: HexColor('1A000000'),
                         blurRadius: 10,
                         offset: Offset(4, -4),
                       ),
                       BoxShadow(
-                        color: HexColor(_darkblue),
+                        color: HexColor(_white),
                         blurRadius: 4,
                         offset: Offset(4, -4),
                       )
                     ]),
-                    child: TabBar(
-                      indicator: BoxDecoration(color: HexColor(_lightBlue)),
-                      unselectedLabelColor: Colors.white,
-                      controller: _tabController,
-                      indicatorSize: TabBarIndicatorSize.tab,
-                      tabs: list,
-                      unselectedLabelStyle: TextStyle(
-                        fontFamily: 'pop-med',
-                        fontSize: 15,
+                    // child: TabBar(
+                    //   indicator: BoxDecoration(color: HexColor(_white)),
+                    //   // unselectedLabelColor: Colors.white,
+                    //   controller: _tabController,
+                    //   indicatorSize: TabBarIndicatorSize.tab,
+                    //   tabs: list,
+                    //   unselectedLabelStyle: TextStyle(
+                    //     fontFamily: 'pop-med',
+                    //     fontSize: 15,
+                    //   ),
+                    //   labelStyle: TextStyle(
+                    //       fontFamily: 'pop-med',
+                    //       fontSize: 20,
+                    //       color: Colors.black),
+                    //   automaticIndicatorColorAdjustment: false,
+                    // ),
+                  ),
+
+                  _space(30),
+
+                  Center(
+                    child: Text(
+                      "PERSONAL INFO",
+                      style: TextStyle(
+                        fontFamily: 'pop-bold',
+                        fontSize: 20,
                       ),
-                      labelStyle: TextStyle(
-                        fontFamily: 'pop-med',
-                        fontSize: 15,
-                      ),
-                      automaticIndicatorColorAdjustment: false,
                     ),
                   ),
+                  _space(15),
                   Flexible(
                     child: TabBarView(controller: _tabController, children: [
                       FutureBuilder(
@@ -185,53 +199,99 @@ class _ProfileState extends State<Profile> with TickerProviderStateMixin {
                               return personalInfo(snapshot);
                             }
                           }),
-                      FutureBuilder(
-                          future: _getBusinessList(),
-                          builder: (BuildContext ctx, AsyncSnapshot snapshot) {
-                            if (snapshot.data == null) {
-                              return Container(
-                                  child: Center(
-                                      child: CircularProgressIndicator()));
-                            } else {
-                              return _businessInfo(snapshot);
-                            }
-                          }),
-                      FutureBuilder(
-                          future: _getFamilyList(),
-                          builder: (BuildContext ctx,
-                              AsyncSnapshot<dynamic> snapshot) {
-                            if (snapshot.data == null) {
-                              return Center(child: CircularProgressIndicator());
-                            } else {
-                              return _familyInfo(snapshot);
-                            }
-                          })
+                      // FutureBuilder(
+                      //     future: _getBusinessList(),
+                      //     builder: (BuildContext ctx, AsyncSnapshot snapshot) {
+                      //       if (snapshot.data == null) {
+                      //         return Container(
+                      //             child: Center(
+                      //                 child: CircularProgressIndicator()));
+                      //       } else {
+                      //         return _businessInfo(snapshot);
+                      //       }
+                      //     }),
+                      // FutureBuilder(
+                      //     future: _getFamilyList(),
+                      //     builder: (BuildContext ctx,
+                      //         AsyncSnapshot<dynamic> snapshot) {
+                      //       if (snapshot.data == null) {
+                      //         return Center(child: CircularProgressIndicator());
+                      //       } else {
+                      //         return _familyInfo(snapshot);
+                      //       }
+                      //     })
                     ]),
                   ),
                   // call button
                   Container(
-                    margin: EdgeInsets.fromLTRB(15, 0, 15, 10),
-                    child: ElevatedButton(
-                        style: ElevatedButton.styleFrom(
-                            primary: HexColor(_darkblue),
-                            padding: EdgeInsets.all(10)),
-                        onPressed: () {
-                          if (PHONE == "null") {
-                            ScaffoldMessenger.of(ctx).showSnackBar(SnackBar(
-                              content: Text("User not provide contact details"),
-                              padding: EdgeInsets.all(10),
-                              duration: Duration(seconds: 2),
-                            ));
-                          } else {
-                            launch("tel://$PHONE");
-                          }
-                        },
-                        child: Text(
-                          'Call Now',
-                          style:
-                              TextStyle(fontFamily: 'pop-bold', fontSize: 14),
-                        )),
+                    //margin: EdgeInsets.fromLTRB(15, 0, 15, 10),
+                    padding: EdgeInsets.symmetric(horizontal: 5, vertical: 5),
+
+                    child: Row(
+                      mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                      children: [
+                        ElevatedButton.icon(
+                          icon: Icon(
+                            Icons.call,
+                            color: Color.fromARGB(255, 252, 249, 249),
+                          ),
+                          style: ElevatedButton.styleFrom(
+                              backgroundColor: Color.fromARGB(255, 3, 0, 0),
+                              //primary: HexColor(_black),
+                              padding: EdgeInsets.symmetric(
+                                  horizontal: 33, vertical: 15)),
+                          onPressed: () {
+                            if (PHONE == "null") {
+                              ScaffoldMessenger.of(ctx).showSnackBar(SnackBar(
+                                content:
+                                    Text("User not provide contact details"),
+                                padding: EdgeInsets.all(10),
+                                duration: Duration(seconds: 2),
+                              ));
+                            } else {
+                              launch("tel://$PHONE");
+                            }
+                          },
+                          label: Text(
+                            'Call Now',
+                            style: TextStyle(
+                              fontFamily: 'pop-bold',
+                              fontSize: 16,
+                            ),
+                          ),
+                        ),
+                        ElevatedButton.icon(
+                            icon: Icon(Icons.whatsapp,
+                                color: Color.fromARGB(255, 229, 235, 230)),
+                            style: ElevatedButton.styleFrom(
+                                // backgroundColor: Colors.lightGreen,
+                                primary: HexColor(_green),
+                                padding: EdgeInsets.symmetric(
+                                    horizontal: 32, vertical: 15)),
+                            onPressed: () {
+                              if (PHONE == "null") {
+                                ScaffoldMessenger.of(ctx).showSnackBar(SnackBar(
+                                  content:
+                                      Text("User not provide contact details"),
+                                  padding: EdgeInsets.all(10),
+                                  duration: Duration(seconds: 2),
+                                ));
+                              } else {
+                                launch("whatsapp:=$PHONE");
+                              }
+                            },
+                            label: Text(
+                              "WhatsApp",
+                              style: TextStyle(
+                                fontFamily: 'pop-bold',
+                                fontSize: 16,
+                              ),
+                            )),
+                      ],
+                    ),
                   ),
+
+                  SizedBox(height: 12)
                 ],
               ),
             );
@@ -252,7 +312,7 @@ class _ProfileState extends State<Profile> with TickerProviderStateMixin {
     return propic != ''
         ? Container(
             padding: EdgeInsets.all(20),
-            color: HexColor(_darkblue),
+            color: HexColor(_white),
             child: Column(
               children: [
                 InkWell(
@@ -266,7 +326,7 @@ class _ProfileState extends State<Profile> with TickerProviderStateMixin {
                 Text(
                   caps(name),
                   style: TextStyle(
-                      color: Colors.white,
+                      color: Color.fromARGB(255, 5, 5, 5),
                       fontSize: 20,
                       fontFamily: 'pop-semibold'),
                 ),
@@ -274,7 +334,7 @@ class _ProfileState extends State<Profile> with TickerProviderStateMixin {
                 Text(
                   caps(role),
                   style: TextStyle(
-                      color: Colors.white, fontSize: 16, fontFamily: 'pop-med'),
+                      color: Colors.black, fontSize: 16, fontFamily: 'pop-med'),
                 )
               ],
             ),
@@ -283,8 +343,8 @@ class _ProfileState extends State<Profile> with TickerProviderStateMixin {
   }
 
   _personalTap() => Tab(child: _customTabTitle("Personal info"));
-  _businessTap() => Tab(child: _customTabTitle('Business info'));
-  _familyTap() => Tab(child: _customTabTitle('Family info'));
+  // _businessTap() => Tab(child: _customTabTitle('Business info'));
+  // _familyTap() => Tab(child: _customTabTitle('Family info'));
 
   _space(double h) {
     return SizedBox(
@@ -299,66 +359,66 @@ class _ProfileState extends State<Profile> with TickerProviderStateMixin {
         _custTile('location.svg', snapshot.data[0].location),
         _custTile('mail_colored.svg', snapshot.data[0].email),
         _custTile('heart.svg', snapshot.data[0].dob),
-        _custTile('blood_colored.svg', snapshot.data[0].blood),
+        _custTile('bloods_colored.svg', snapshot.data[0].blood),
         _custTile('phone_colored.svg', snapshot.data[0].phoneno)
       ],
     );
   }
+// width="289.2" height="426.1"/
+  // _businessInfo(AsyncSnapshot snapshot) {
+  //   return ListView(
+  //     children: [
+  //       _space(5),
+  //       _custTile('work.svg', snapshot.data[0].role),
+  //       _custTile('work.svg', snapshot.data[0].sector),
+  //       _custTile('location.svg', snapshot.data[0].companyName),
+  //     ],
+  //   );
+  // }
 
-  _businessInfo(AsyncSnapshot snapshot) {
-    return ListView(
-      children: [
-        _space(5),
-        _custTile('work.svg', snapshot.data[0].role),
-        _custTile('work.svg', snapshot.data[0].sector),
-        _custTile('location.svg', snapshot.data[0].companyName),
-      ],
-    );
-  }
-
-  _familyInfo(AsyncSnapshot<dynamic> snapshot) {
-    return ListView.builder(
-        itemCount: snapshot.data.length,
-        itemBuilder: (BuildContext ctx, int index) {
-          if (index == 0) {
-            return Column(
-              children: [
-                Padding(
-                  padding: const EdgeInsets.all(8.0),
-                  child: Row(
-                    children: [
-                      _tableTile("Name"),
-                      _tableTile("DOB"),
-                      _tableTile("Relationship")
-                    ],
-                  ),
-                ),
-                Padding(
-                  padding: const EdgeInsets.all(8.0),
-                  child: Row(
-                    children: [
-                      _tableTile("${snapshot.data[index].name}"),
-                      _tableTile("${snapshot.data[index].dob}"),
-                      _tableTile("${snapshot.data[index].relationship}")
-                    ],
-                  ),
-                ),
-              ],
-            );
-          } else {
-            return Padding(
-              padding: const EdgeInsets.all(8.0),
-              child: Row(
-                children: [
-                  _tableTile("${snapshot.data[index].name}"),
-                  _tableTile("${snapshot.data[index].dob}"),
-                  _tableTile("${snapshot.data[index].relationship}")
-                ],
-              ),
-            );
-          }
-        });
-  }
+  // _familyInfo(AsyncSnapshot<dynamic> snapshot) {
+  //   return ListView.builder(
+  //       itemCount: snapshot.data.length,
+  //       itemBuilder: (BuildContext ctx, int index) {
+  //         if (index == 0) {
+  //           return Column(
+  //             children: [
+  //               Padding(
+  //                 padding: const EdgeInsets.all(8.0),
+  //                 child: Row(
+  //                   children: [
+  //                     _tableTile("Name"),
+  //                     _tableTile("DOB"),
+  //                     _tableTile("Relationship")
+  //                   ],
+  //                 ),
+  //               ),
+  //               Padding(
+  //                 padding: const EdgeInsets.all(8.0),
+  //                 child: Row(
+  //                   children: [
+  //                     _tableTile("${snapshot.data[index].name}"),
+  //                     _tableTile("${snapshot.data[index].dob}"),
+  //                     _tableTile("${snapshot.data[index].relationship}")
+  //                   ],
+  //                 ),
+  //               ),
+  //             ],
+  //           );
+  //         } else {
+  //           return Padding(
+  //             padding: const EdgeInsets.all(8.0),
+  //             child: Row(
+  //               children: [
+  //                 _tableTile("${snapshot.data[index].name}"),
+  //                 _tableTile("${snapshot.data[index].dob}"),
+  //                 _tableTile("${snapshot.data[index].relationship}")
+  //               ],
+  //             ),
+  //           );
+  //         }
+  //       });
+  // }
 
   _custTile(String icon, String title) {
     return ListTile(
@@ -366,7 +426,7 @@ class _ProfileState extends State<Profile> with TickerProviderStateMixin {
       minLeadingWidth: 1,
       leading: SvgPicture.asset(
         'assets/icons/$icon',
-        width: 24,
+        width: 30,
       ),
     );
   }

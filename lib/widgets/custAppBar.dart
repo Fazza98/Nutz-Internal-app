@@ -21,19 +21,19 @@ class CustAppBar {
           Row(
             children: [
               Text(
-                'JCI ',
+                'nutz     ',
                 style: TextStyle(
-                    fontSize: 18,
+                    fontSize: 25,
                     fontFamily: "pop-semibold",
-                    color: HexColor(lightBlue)),
+                    color: Colors.black),
               ),
-              Text(
-                'Green City',
-                style: TextStyle(
-                    fontSize: 18,
-                    fontFamily: "pop-semibold",
-                    color: HexColor(darkBlue)),
-              ),
+              // Text(
+              //   'making sense',
+              //   style: TextStyle(
+              //       fontSize: 10,
+              //       fontFamily: "pop-semibold",
+              //       color: Colors.black),
+              // ),
               SizedBox(width: 10)
             ],
           )
@@ -56,24 +56,24 @@ class CustAppBar {
                 fontSize: 18, fontFamily: "pop-semibold", color: Colors.black),
           ),
           Row(
-            children: [
-              Text(
-                'JCI ',
-                style: TextStyle(
-                    fontSize: 18,
-                    fontFamily: "pop-semibold",
-                    color: HexColor(lightBlue)),
-              ),
-              Text(
-                'Green City',
-                style: TextStyle(
-                    fontSize: 18,
-                    fontFamily: "pop-semibold",
-                    color: HexColor(darkBlue)),
-              ),
-              SizedBox(width: 10)
-            ],
-          )
+              // children: [
+              //   Text(
+              //     'JCI ',
+              //     style: TextStyle(
+              //         fontSize: 18,
+              //         fontFamily: "pop-semibold",
+              //         color: HexColor(lightBlue)),
+              //   ),
+              //   Text(
+              //     'Green City',
+              //     style: TextStyle(
+              //         fontSize: 18,
+              //         fontFamily: "pop-semibold",
+              //         color: HexColor(darkBlue)),
+              //   ),
+              //   SizedBox(width: 10)
+              // ],
+              )
         ],
       ),
       backgroundColor: Colors.white,

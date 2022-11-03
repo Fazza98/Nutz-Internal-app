@@ -51,7 +51,9 @@ class _BloodDonorsState extends State<BloodDonors> {
               if (snapshot.data == null) {
                 return Container(
                   child: Center(
-                    child: CircularProgressIndicator(),
+                    child: CircularProgressIndicator(
+                        valueColor:
+                            AlwaysStoppedAnimation<Color>(Colors.black)),
                   ),
                 );
               } else {
@@ -84,20 +86,20 @@ class _BloodDonorsState extends State<BloodDonors> {
                               child: _memRow(mem),
                             ),
                             _space(20),
-                            Visibility(
-                                visible:
-                                    visibleController.getMainSponsorVisiblity(),
-                                child: SponsorData.sponserTitle(
-                                    "${JciString.powered_by}")),
-                            _space(10),
-                            SponsorData.mainSponsor(context),
-                            _space(10),
-                            Visibility(
-                              visible: visibleController.getVisible(),
-                              child: SponsorData.sponserTitle(
-                                  '${JciString.co_powered_by}'),
-                            ),
-                            SponsorData.otherSponsor(context),
+                            // Visibility(
+                            //     visible:
+                            //         visibleController.getMainSponsorVisiblity(),
+                            //     child: SponsorData.sponserTitle(
+                            //         "${JciString.powered_by}")),
+                            // _space(10),
+                            // SponsorData.mainSponsor(context),
+                            // _space(10),
+                            // Visibility(
+                            //   visible: visibleController.getVisible(),
+                            //   child: SponsorData.sponserTitle(
+                            //       '${JciString.co_powered_by}'),
+                            // ),
+                            // SponsorData.otherSponsor(context),
                             _space(20)
                           ],
                         );

@@ -126,7 +126,9 @@ class _MembersState extends State<Members> {
                   return Container(
                     margin: EdgeInsets.only(
                         top: MediaQuery.of(context).size.height / 3),
-                    child: CircularProgressIndicator(),
+                    child: CircularProgressIndicator(
+                        valueColor:
+                            AlwaysStoppedAnimation<Color>(Colors.black) ),
                   );
                 } else if (snapshot.data == null &&
                     snapshot.connectionState == ConnectionState.done) {
@@ -192,22 +194,22 @@ class _MembersState extends State<Members> {
                                         ),
                                       ),
                                       _space(20),
-                                      Visibility(
-                                        visible: visibleController
-                                            .getMainSponsorVisiblity(),
-                                        child: SponsorData.sponserTitle(
-                                            "${JciString.powered_by}"),
-                                      ),
-                                      _space(10),
-                                      SponsorData.mainSponsor(context),
-                                      _space(10),
-                                      Visibility(
-                                        visible: visibleController.getVisible(),
-                                        child: SponsorData.sponserTitle(
-                                            '${JciString.co_powered_by}'),
-                                      ),
-                                      SponsorData.otherSponsor(context),
-                                      _space(20)
+                                      // Visibility(
+                                      //   visible: visibleController
+                                      //       .getMainSponsorVisiblity(),
+                                      //   child: SponsorData.sponserTitle(
+                                      //       "${JciString.powered_by}"),
+                                      // ),
+                                      // _space(10),
+                                      // SponsorData.mainSponsor(context),
+                                      // _space(10),
+                                      // Visibility(
+                                      //   visible: visibleController.getVisible(),
+                                      //   child: SponsorData.sponserTitle(
+                                      //       '${JciString.co_powered_by}'),
+                                      // ),
+                                      // SponsorData.otherSponsor(context),
+                                      // _space(20)
                                     ],
                                   );
                                 } else {

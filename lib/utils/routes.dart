@@ -54,9 +54,9 @@ class Routes {
         name: '/imgView',
         page: () => ImageViewer(),
         transition: Transition.leftToRight),
-    GetPage(
-        name: '/dashboard',
-        page: () => Dashboard(),
-        transition: Transition.leftToRight)
+    // GetPage(
+    //     name: '/dashboard',
+    //     // page: () => Dashboard(),
+    //     transition: Transition.leftToRight)
   ];
 }

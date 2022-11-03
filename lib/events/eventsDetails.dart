@@ -158,23 +158,23 @@ class _EventsDetailsState extends State<EventsDetails> {
                               }),
                           SizedBox(height: 30),
                           _spaceHeight(20),
-                          Visibility(
-                            visible:
-                                visibleController.getMainSponsorVisiblity(),
-                            child: Center(
-                                child: SponsorData.sponserTitle(
-                                    '${JciString.powered_by}')),
-                          ),
-                          _spaceHeight(10),
-                          Center(child: SponsorData.mainSponsor(context)),
-                          _spaceHeight(10),
-                          Visibility(
-                            visible: visibleController.getVisible(),
-                            child: Center(
-                                child: SponsorData.sponserTitle(
-                                    '${JciString.co_powered_by}')),
-                          ),
-                          Center(child: SponsorData.otherSponsor(context)),
+                          // Visibility(
+                          //   visible:
+                          //       visibleController.getMainSponsorVisiblity(),
+                          //   child: Center(
+                          //       child: SponsorData.sponserTitle(
+                          //           '${JciString.powered_by}')),
+                          // ),
+                          // _spaceHeight(10),
+                          // Center(child: SponsorData.mainSponsor(context)),
+                          // _spaceHeight(10),
+                          // Visibility(
+                          //   visible: visibleController.getVisible(),
+                          //   child: Center(
+                          //       child: SponsorData.sponserTitle(
+                          //           '${JciString.co_powered_by}')),
+                          // ),
+                          // Center(child: SponsorData.otherSponsor(context)),
                           _spaceHeight(20)
                         ],
                       ),

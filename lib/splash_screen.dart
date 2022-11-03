@@ -18,7 +18,7 @@ class _SplashScreenState extends State<SplashScreen> {
     return Scaffold(
         backgroundColor: Colors.white,
         body: Column(
-          crossAxisAlignment: CrossAxisAlignment.stretch,
+          crossAxisAlignment: CrossAxisAlignment.center,
           mainAxisAlignment: MainAxisAlignment.center,
           children: [
             SizedBox(
@@ -27,31 +27,33 @@ class _SplashScreenState extends State<SplashScreen> {
             Expanded(
               child: Align(
                   alignment: Alignment.center,
-                  child: SvgPicture.asset("assets/images/jci_logo.svg")),
+                  child: SvgPicture.asset(
+                    "assets/images/logo.svg",
+                  )),
             ),
-            Align(
-              child: Column(
-                children: [
-                  Text(
-                    'Developed By',
-                    style: TextStyle(
-                      fontFamily: "pop-med",
-                      fontSize: 11,
-                    ),
-                  ),
-                  Container(
-                    margin: EdgeInsets.all(10),
-                    child: SvgPicture.asset(
-                      "assets/images/logo.svg",
-                      height: Get.height * 0.05,
-                    ),
-                  ),
-                  SizedBox(
-                    height: 50,
-                  )
-                ],
-              ),
-            ),
+            // Align(
+            //   child: Column(
+            //     children: [
+            //       Text(
+            //         'Developed By',
+            //         style: TextStyle(
+            //           fontFamily: "pop-med",
+            //           fontSize: 11,
+            //         ),
+            //       ),
+            //       Container(
+            //         margin: EdgeInsets.all(10),
+            //         child: SvgPicture.asset(
+            //           "assets/images/logo.svg",
+            //           height: Get.height * 0.05,
+            //         ),
+            //       ),
+            //       SizedBox(
+            //         height: 50,
+            //       )
+            //     ],
+            //   ),
+            // ),
           ],
         ));
   }

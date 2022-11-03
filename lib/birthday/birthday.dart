@@ -31,16 +31,17 @@ class _BirthdayState extends State<Birthday> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: CustAppBar(titles.birthday).initAppBar(),
-      body: SingleChildScrollView(
-        child: FutureBuilder(
-            future: _getBirthdayData(),
-            builder: (BuildContext ctx, AsyncSnapshot snapshot) {
-              if (snapshot.data == null) {
-                return Center(
-                  child: CircularProgressIndicator(),
-                );
-              } else {
-                return Column(
+      body: FutureBuilder(
+          future: _getBirthdayData(), 
+          builder: (BuildContext ctx, AsyncSnapshot snapshot) {
+            if (snapshot.data == null) {
+              return Center(
+                child: CircularProgressIndicator(
+                    valueColor: AlwaysStoppedAnimation<Color>(Colors.black)),
+              );
+            } else {
+              return SingleChildScrollView(
+                child: Column(
                   children: [
                     Container(
                       height: MediaQuery.of(context).size.height - 100,
@@ -58,24 +59,24 @@ class _BirthdayState extends State<Birthday> {
                       ),
                     ),
                     _space(20),
-                    Visibility(
-                        visible: visibleController.getMainSponsorVisiblity(),
-                        child: SponsorData.sponserTitle(
-                            "${JciString.powered_by}")),
-                    _space(10),
-                    SponsorData.mainSponsor(context),
-                    _space(10),
-                    Visibility(
-                        visible: visibleController.getVisible(),
-                        child: SponsorData.sponserTitle(
-                            '${JciString.co_powered_by}')),
-                    SponsorData.otherSponsor(context),
+                    // Visibility(
+                    //     visible: visibleController.getMainSponsorVisiblity(),
+                    //     child: SponsorData.sponserTitle(
+                    //         "${JciString.powered_by}")),
+                    // _space(10),
+                    // SponsorData.mainSponsor(context),
+                    // _space(10),
+                    // Visibility(
+                    //     visible: visibleController.getVisible(),
+                    //     child: SponsorData.sponserTitle(
+                    //         '${JciString.co_powered_by}')),
+                    // SponsorData.otherSponsor(context),
                     _space(20)
                   ],
-                );
-              }
-            }),
-      ),
+                ),
+              );
+            }
+          }),
     );
   }
 
@@ -97,7 +98,7 @@ class _BirthdayState extends State<Birthday> {
           '${caps(_dob['user_name'])}\'s birthday',
           startTime,
           endTime,
-          const Color(0xFF0F8644),
+          Color.fromARGB(255, 0, 0, 0),
           false,
           'FREQ=YEARLY;BYMONTHDAY=${bday[0]};BYMONTH=${bday[1]};COUNT=100'));
     }

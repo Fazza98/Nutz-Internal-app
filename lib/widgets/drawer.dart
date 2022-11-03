@@ -5,7 +5,7 @@ import 'package:jci/widgets/titles.dart';
 
 var lightBlue = '24B9EC';
 var darkBlue = '23346B';
-double _svgWidth = 20;
+double _svgWidth = 35;
 
 class drawer extends StatelessWidget {
   @override
@@ -26,20 +26,20 @@ class drawer extends StatelessWidget {
                       height: 40,
                       width: 40,
                       child: SvgPicture.asset(
-                        "assets/images/jci_logo.svg",
+                        "assets/images/logo.svg",
                       ),
                     ),
                   )),
                   // about
-                  ListTile(
-                    title: _listTile(titles.about),
-                    minLeadingWidth: 1,
-                    leading: _about,
-                    onTap: () {
-                      Get.back();
-                      Get.toNamed("/about");
-                    },
-                  ),
+                  // ListTile(
+                  //   title: _listTile(titles.about),
+                  //   minLeadingWidth: 1,
+                  //   leading: _about,
+                  //   onTap: () {
+                  //     Get.back();
+                  //     Get.toNamed("/about");
+                  //   },
+                  // ),
                   // events
                   ListTile(
                       title: _listTile(titles.event),
@@ -50,49 +50,33 @@ class drawer extends StatelessWidget {
                         Get.toNamed("/events");
                       }),
                   // board member
-                  ListTile(
-                    title: _listTile(titles.board_members),
-                    minLeadingWidth: 1,
-                    leading: _board_member,
-                    onTap: () {
-                      Get.back();
-                      Get.toNamed("/members", arguments: ["bm"]);
-                    },
-                  ),
+                  // ListTile(
+                  //   title: _listTile(titles.board_members),
+                  //   minLeadingWidth: 1,
+                  //   leading: _board_member,
+                  //   onTap: () {
+                  //     Get.back();
+                  //     Get.toNamed("/members", arguments: ["bm"]);
+                  //   },
+                  // ),
                   // past president
-                  ListTile(
-                    title: _listTile(titles.green_channel),
-                    minLeadingWidth: 1,
-                    leading: _dashboard,
-                    onTap: () {
-                      Get.back();
-                      Get.toNamed("/dashboard", arguments: ["pp"]);
-                    },
-                  ),
+
                   // member
                   ListTile(
                     title: _listTile(titles.members),
-                    minLeadingWidth: 1,
+                    minLeadingWidth: 0,
+                    horizontalTitleGap: 10,
                     leading: _members,
                     onTap: () {
                       Get.back();
                       Get.toNamed("/members", arguments: ['mem']);
                     },
                   ),
-                  // roll of honour
-                  ListTile(
-                    title: _listTile(titles.roh),
-                    minLeadingWidth: 1,
-                    leading: _roll_of_honour,
-                    onTap: () {
-                      Get.back();
-                      Get.toNamed("/roh");
-                    },
-                  ),
                   // birthday
                   ListTile(
                     title: _listTile(titles.birthday),
                     minLeadingWidth: 1,
+                    horizontalTitleGap: 10,
                     leading: _birthday,
                     onTap: () {
                       Get.back();
@@ -103,31 +87,52 @@ class drawer extends StatelessWidget {
                   ListTile(
                     title: _listTile(titles.blood_donors),
                     minLeadingWidth: 1,
+                    horizontalTitleGap: 10,
                     leading: _blood,
                     onTap: () {
                       Get.back();
                       Get.toNamed("/blood");
                     },
-                  )
+                  ),
+
+                  // roll of honour
+                  ListTile(
+                    title: _listTile(titles.roh),
+                    minLeadingWidth: 1,
+                    leading: _roll_of_honour,
+                    onTap: () {
+                      Get.back();
+                      Get.toNamed("/roh");
+                    },
+                  ),
+                  ListTile(
+                    title: _listTile(titles.green_channel),
+                    minLeadingWidth: 1,
+                    leading: _dashboard,
+                    onTap: () {
+                      Get.back();
+                      Get.toNamed("/dashboard", arguments: ["pp"]);
+                    },
+                  ),
                 ],
               ),
             ),
-            Text(
-              'Developed by',
-              style: TextStyle(
-                fontFamily: "pop-med",
-                fontSize: 11,
-              ),
-            ),
-            Container(
-              margin: EdgeInsets.all(10),
-              child: SvgPicture.asset(
-                "assets/images/logo.svg",
-                height: Get.height * 0.05,
-              ),
-            ),
+            // Text(
+            //   'Developed by',
+            //   style: TextStyle(
+            //     fontFamily: "pop-med",
+            //     fontSize: 11,
+            //   ),
+            // ),
+            // Container(
+            //   margin: EdgeInsets.all(10),
+            //   child: SvgPicture.asset(
+            //     "assets/images/logo.svg",
+            //     height: Get.height * 0.05,
+            //   ),
+            // ),
             SizedBox(
-              height: Get.height * 0.04,
+              height: Get.height * 0.08,
             )
           ],
         ),
@@ -135,29 +140,22 @@ class drawer extends StatelessWidget {
     );
   }
 
-  final Widget _about = SvgPicture.asset(
-    'assets/icons/about_colored.svg',
-    width: _svgWidth,
-  );
-
   final Widget _birthday = SvgPicture.asset(
     'assets/icons/birthday_colored.svg',
-    width: _svgWidth,
+    // width: 20,
+    height: 40,
   );
 
   final Widget _blood = SvgPicture.asset(
     'assets/icons/blood_colored.svg',
-    width: _svgWidth,
-  );
-
-  final Widget _board_member = SvgPicture.asset(
-    'assets/icons/board_members.svg',
-    width: _svgWidth,
+    // width: 20,
+    height: 40,
   );
 
   final Widget _members = SvgPicture.asset(
     'assets/icons/members_colored.svg',
-    width: _svgWidth,
+    // width: 20,
+    height: 40,
   );
 
   final Widget _dashboard = SvgPicture.asset(

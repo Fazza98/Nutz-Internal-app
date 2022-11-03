@@ -36,7 +36,9 @@ class _EventsState extends State<Events> {
                 if (snapshot.data == null &&
                     snapshot.connectionState == ConnectionState.waiting) {
                   return Center(
-                    child: CircularProgressIndicator(),
+                    child: CircularProgressIndicator(
+                        valueColor:
+                            AlwaysStoppedAnimation<Color>(Colors.black)),
                   );
                 } else {
                   return snapshot.data.length == 0
@@ -132,21 +134,21 @@ class _EventsState extends State<Events> {
                                     ),
                                   ),
                                   _spaceHeight(20),
-                                  Visibility(
-                                    visible: visibleController
-                                        .getMainSponsorVisiblity(),
-                                    child: SponsorData.sponserTitle(
-                                        "${JciString.powered_by}"),
-                                  ),
-                                  _space(10),
-                                  SponsorData.mainSponsor(context),
-                                  _space(10),
-                                  Visibility(
-                                    visible: visibleController.getVisible(),
-                                    child: SponsorData.sponserTitle(
-                                        '${JciString.co_powered_by}'),
-                                  ),
-                                  SponsorData.otherSponsor(context),
+                                  // Visibility(
+                                  //   visible: visibleController
+                                  //       .getMainSponsorVisiblity(),
+                                  //   child: SponsorData.sponserTitle(
+                                  //       "${JciString.powered_by}"),
+                                  // ),
+                                  // _space(10),
+                                  // SponsorData.mainSponsor(context),
+                                  // _space(10),
+                                  // Visibility(
+                                  //   visible: visibleController.getVisible(),
+                                  //   child: SponsorData.sponserTitle(
+                                  //       '${JciString.co_powered_by}'),
+                                  // ),
+                                  // SponsorData.otherSponsor(context),
                                   _space(20)
                                 ],
                               );

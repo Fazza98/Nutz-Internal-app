@@ -28,7 +28,10 @@ class _RohDetailsState extends State<RohDetails> {
             builder: (BuildContext ctx, AsyncSnapshot snapshot) {
               if (snapshot.data == null &&
                   snapshot.connectionState == ConnectionState.waiting) {
-                return Center(child: CircularProgressIndicator());
+                return Center(
+                    child: CircularProgressIndicator(
+                        valueColor:
+                            AlwaysStoppedAnimation<Color>(Colors.black)));
               } else if (snapshot.data == null &&
                   snapshot.connectionState == ConnectionState.done) {
                 return Center(
@@ -51,22 +54,22 @@ class _RohDetailsState extends State<RohDetails> {
                                 snapshot.data[idx].name,
                                 snapshot.data[idx].role),
                             _space(20),
-                            Visibility(
-                                visible: controller.getMainSponsorVisiblity(),
-                                child: SponsorData.sponserTitle(
-                                    "${JciString.powered_by}")),
-                            _space(10),
-                            Visibility(
-                                visible: controller.getMainSponsorVisiblity(),
-                                child: SponsorData.mainSponsor(context)),
-                            _space(10),
-                            Visibility(
-                              visible: controller.getVisible(),
-                              child: SponsorData.sponserTitle(
-                                  '${JciString.co_powered_by}'),
-                            ),
-                            SponsorData.otherSponsor(context),
-                            _space(20)
+                            // Visibility(
+                            //     visible: controller.getMainSponsorVisiblity(),
+                            //     child: SponsorData.sponserTitle(
+                            //         "${JciString.powered_by}")),
+                            // _space(10),
+                            // Visibility(
+                            //     visible: controller.getMainSponsorVisiblity(),
+                            //     child: SponsorData.mainSponsor(context)),
+                            // _space(10),
+                            // Visibility(
+                            //   visible: controller.getVisible(),
+                            //   child: SponsorData.sponserTitle(
+                            //       '${JciString.co_powered_by}'),
+                            // ),
+                            // SponsorData.otherSponsor(context),
+                            // _space(20)
                           ],
                         );
                       } else {

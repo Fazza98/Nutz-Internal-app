@@ -12,7 +12,7 @@ import 'package:jci/widgets/drawer.dart';
 import 'package:jci/widgets/sponsorData.dart';
 import 'package:get/get.dart';
 import 'package:jci/widgets/titles.dart';
-
+import 'package:url_launcher/url_launcher.dart';
 import '../services/sponser_service.dart';
 
 class Home extends StatefulWidget {
@@ -82,7 +82,10 @@ class _HomeState extends State<Home> {
                     snapshot.connectionState == ConnectionState.waiting) {
                   return Container(
                       height: 200,
-                      child: Center(child: CircularProgressIndicator()));
+                      child: Center(
+                          child: CircularProgressIndicator(
+                              valueColor: AlwaysStoppedAnimation<Color>(
+                                  Colors.black))));
                 } else if (snapshot.connectionState == ConnectionState.done &&
                     snapshot.data == null) {
                   return Container();
@@ -156,6 +159,7 @@ class _HomeState extends State<Home> {
                   leading: SvgPicture.asset(
                     "assets/icons/event_colored.svg",
                     width: 28,
+                    height: 35,
                   ),
                   title: Center(
                     child: Text(
@@ -179,79 +183,6 @@ class _HomeState extends State<Home> {
               child: Row(
                 mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                 children: [
-                  // about
-                  Expanded(
-                    child: InkWell(
-                      onTap: () => Get.toNamed("/about"),
-                      child: Container(
-                        child: Column(
-                          children: [
-                            SvgPicture.asset(
-                              "assets/icons/about_colored.svg",
-                              width: 30,
-                              height: 30,
-                            ),
-                            _space(10),
-                            _title("About")
-                          ],
-                        ),
-                      ),
-                    ),
-                  ),
-                  // board members
-                  Expanded(
-                    child: InkWell(
-                      onTap: () {
-                        Get.back();
-                        Get.toNamed("/members", arguments: ["bm"]);
-                      },
-                      child: Container(
-                        child: Column(
-                          children: [
-                            SvgPicture.asset(
-                              "assets/icons/board_members.svg",
-                              width: 30,
-                              height: 30,
-                            ),
-                            SizedBox(
-                              height: 10,
-                            ),
-                            _title("Board Members")
-                          ],
-                        ),
-                      ),
-                    ),
-                  ),
-                  // past president
-                  Expanded(
-                    child: InkWell(
-                      onTap: () {
-                        Get.back();
-                        Get.toNamed("/dashboard");
-                      },
-                      child: Container(
-                        child: Column(
-                          children: [
-                            SvgPicture.asset(
-                              "assets/icons/dashboard.svg",
-                              width: 35,
-                              height: 30,
-                            ),
-                            _space(10),
-                            _title("Green Channel")
-                          ],
-                        ),
-                      ),
-                    ),
-                  ),
-                ],
-              ),
-            ),
-            _space(15),
-            Padding(
-              padding: const EdgeInsets.symmetric(horizontal: 10),
-              child: Row(
-                children: [
                   // members
                   Expanded(
                     child: InkWell(
@@ -263,28 +194,9 @@ class _HomeState extends State<Home> {
                         child: Column(
                           children: [
                             SvgPicture.asset("assets/icons/members_colored.svg",
-                                width: 30, height: 30),
-                            _space(10),
+                                width: 35, height: 55),
+                            _space(6),
                             _title("Members")
-                          ],
-                        ),
-                      ),
-                    ),
-                  ),
-                  // roh
-                  Expanded(
-                    child: InkWell(
-                      onTap: () => Get.toNamed("/roh"),
-                      child: Container(
-                        child: Column(
-                          children: [
-                            SvgPicture.asset(
-                              "assets/icons/roll_of_honour_colored.svg",
-                              width: 35,
-                              height: 35,
-                            ),
-                            _space(5),
-                            _title("Roll of honour")
                           ],
                         ),
                       ),
@@ -299,11 +211,137 @@ class _HomeState extends State<Home> {
                           children: [
                             SvgPicture.asset(
                               "assets/icons/birthday_colored.svg",
-                              width: 30,
-                              height: 30,
+                              width: 35,
+                              height: 50,
                             ),
                             _space(10),
                             _title("Birthday")
+                          ],
+                        ),
+                      ),
+                    ),
+                  ),
+                  // blood donors
+                  Expanded(
+                    child: InkWell(
+                      onTap: () => Get.toNamed("/blood"),
+                      child: Container(
+                        child: Column(
+                          mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                          crossAxisAlignment: CrossAxisAlignment.stretch,
+                          children: [
+                            SvgPicture.asset(
+                              "assets/icons/blood_colored.svg",
+                              width: 35,
+                              height: 50,
+                            ),
+                            _space(10),
+                            _title("Blood Donors")
+                          ],
+                        ),
+                      ),
+                    ),
+                  ),
+
+                  // about
+                  // Expanded(
+                  //   child: InkWell(
+                  //     onTap: () => Get.toNamed("/about"),
+                  //     child: Container(
+                  //       child: Column(
+                  //         children: [
+                  //           SvgPicture.asset(
+                  //             "assets/icons/about_colored.svg",
+                  //             width: 30,
+                  //             height: 30,
+                  //           ),
+                  //           _space(10),
+                  //           _title("About")
+                  //         ],
+                  //       ),
+                  //     ),
+                  //   ),
+                  // ),
+
+                  // // board members
+                  // Expanded(
+                  //   child: InkWell(
+                  //     onTap: () {
+                  //       Get.back();
+                  //       Get.toNamed("/members", arguments: ["bm"]);
+                  //     },
+                  //     child: Container(
+                  //       child: Column(
+                  //         children: [
+                  //           SvgPicture.asset(
+                  //             "assets/icons/board_members.svg",
+                  //             width: 30,
+                  //             height: 30,
+                  //           ),
+                  //           SizedBox(
+                  //             height: 10,
+                  //           ),
+                  //           _title("Board Members")
+                  //         ],
+                  //       ),
+                  //     ),
+                  //   ),
+                  // ),
+                ],
+              ),
+            ),
+            _space(60),
+            Padding(
+              padding: const EdgeInsets.symmetric(
+                horizontal: 10,
+              ),
+              child: Row(
+                children: [
+                  // roh
+                  Expanded(
+                    child: InkWell(
+                      onTap: () => Get.toNamed("/roh"),
+                      child: Container(
+                        margin: EdgeInsets.fromLTRB(75, 0, 15, 10),
+                        child: Column(
+                          children: [
+                            SvgPicture.asset(
+                              "assets/icons/roll_of_honour_colored.svg",
+                              width: 35,
+                              height: 40,
+                            ),
+                            _space(10),
+                            _title("Guidelines")
+                          ],
+                        ),
+                      ),
+                    ),
+                  ),
+
+                  // past president
+                  Expanded(
+                    child: InkWell(
+                      onTap: () async {
+                        await launch(
+                          'https://nutz.in',
+                          forceWebView: true,
+                          enableJavaScript: true,
+                        );
+                        // Get.back();
+                        // Get.toNamed("/dashboard");
+                      },
+                      child: Container(
+                        margin: EdgeInsets.fromLTRB(15, 0, 75, 10),
+                        // padding: EdgeInsets.symmetric(horizontal: 5, vertical: 5),
+                        child: Column(
+                          children: [
+                            SvgPicture.asset(
+                              "assets/icons/dashboard.svg",
+                              width: 35,
+                              height: 40,
+                            ),
+                            _space(10),
+                            _title("Portfolio")
                           ],
                         ),
                       ),
@@ -317,44 +355,28 @@ class _HomeState extends State<Home> {
               padding: const EdgeInsets.symmetric(horizontal: 10),
               child: Row(
                 mainAxisAlignment: MainAxisAlignment.start,
-                children: [
-                  // blood donors
-                  Expanded(
-                    child: InkWell(
-                      onTap: () => Get.toNamed("/blood"),
-                      child: Container(
-                        child: Column(
-                          mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-                          crossAxisAlignment: CrossAxisAlignment.stretch,
-                          children: [
-                            SvgPicture.asset(
-                              "assets/icons/blood_colored.svg",
-                              width: 30,
-                              height: 30,
-                            ),
-                            _title("Blood Donors")
-                          ],
-                        ),
-                      ),
-                    ),
-                  ),
-                  _dummy(),
-                  _dummy()
-                ],
+                children: [_dummy(), _dummy()],
               ),
             ),
-            _space(30),
-            Visibility(
-                visible: controller.getMainSponsorVisiblity(),
-                child: SponsorData.sponserTitle("${JciString.powered_by}")),
-            _space(10),
-            SponsorData.mainSponsor(context),
-            _space(10),
-            Visibility(
-                visible: controller.getVisible(),
-                child: SponsorData.sponserTitle('${JciString.co_powered_by}')),
-            SponsorData.otherSponsor(context),
-            _space(20)
+            _space(15),
+            // Visibility(
+            //     visible: controller.getMainSponsorVisiblity(),
+            //     child: SponsorData.sponserTitle("${JciString.powered_by}")),
+            // _space(10),
+            // SponsorData.mainSponsor(context),
+            // _space(10),
+            // Visibility(
+            //     visible: controller.getVisible(),
+            //     child: SponsorData.sponserTitle('${JciString.co_powered_by}')),
+            // SponsorData.otherSponsor(context),
+            // _space(20)
+            Padding(
+                padding: const EdgeInsets.symmetric(vertical: 30),
+                child: Align(
+                    alignment: Alignment.center,
+                    child: SvgPicture.asset(
+                      "assets/images/logo.svg",
+                    ))),
           ],
         ),
       ),
@@ -365,7 +387,7 @@ class _HomeState extends State<Home> {
   Widget _title(String title) {
     return Text(
       title,
-      style: TextStyle(fontSize: 13, fontFamily: "pop-med"),
+      style: TextStyle(fontSize: 14, fontFamily: "pop-med"),
       textAlign: TextAlign.center,
     );
   }

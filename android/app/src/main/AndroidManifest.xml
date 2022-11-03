@@ -7,7 +7,7 @@
     <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
     <uses-permission android:name="android.permission.RECEIVE_BOOT_COMPLETED" />
    <application
-        android:label="Jci Erode Greencity"
+        android:label="Nutz"
         android:icon="@mipmap/jci_logo">
         <activity
             android:exported="true"
