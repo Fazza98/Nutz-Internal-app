@@ -31,6 +31,8 @@ dependencies:
   open_file: ^3.2.1
   path_provider: ^2.0.6
   permission_handler: ^8.2.5
+  
+ 
 
   # app_settings: ^4.1.1
   flutter:
@@ -44,16 +46,17 @@ dev_dependencies:
   flutter_launcher_icons: ^0.10.0
 
 flutter_icons:
-  android: "jci_logo"
+  android: "launcher_icon"
   ios: true
-  image_path: "assets/icons/ic_launcher.png"
-  min_sdk_android: 21 # android min sdk min:16, default 21
+  image_path: "assets/icons/ic_launcher.jpg"
+  min_sdk_android: 21
+
+# flutter_icons:
+#   android: "ic_nutz"
+#   image_path: "assets/icons/ic_launcher.jpg"
 
 # The following section is specific to Flutter.
 flutter:
-  # The following line ensures that the Material Icons font is
-  # included with your application, so that you can use the icons in
-  # the material Icons class.
   uses-material-design: true
 
   # To add assets to your application, add an assets section, like this:
@@ -87,6 +90,9 @@ flutter:
     - family: pop-bold
       fonts:
         - asset: fonts/Poppins-Bold.ttf
+    - family: ubuntu
+      fonts:
+        - asset: fonts/Ubuntu-Bold.ttf
 
   # For details regarding fonts from package dependencies,
   # see https://flutter.dev/custom-fonts/#from-packages

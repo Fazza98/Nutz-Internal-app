@@ -29,6 +29,8 @@ class _SplashScreenState extends State<SplashScreen> {
                   alignment: Alignment.center,
                   child: SvgPicture.asset(
                     "assets/images/logo.svg",
+                    width: 65,
+                    height: 80,
                   )),
             ),
             // Align(

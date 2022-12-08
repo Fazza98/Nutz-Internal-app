@@ -21,11 +21,9 @@ class CustAppBar {
           Row(
             children: [
               Text(
-                'nutz     ',
+                'nutz   ',
                 style: TextStyle(
-                    fontSize: 25,
-                    fontFamily: "pop-semibold",
-                    color: Colors.black),
+                    fontSize: 25, fontFamily: "ubuntu", color: Colors.black),
               ),
               // Text(
               //   'making sense',

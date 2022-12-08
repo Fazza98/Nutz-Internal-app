@@ -8,7 +8,7 @@ class LocalNotificationService {
   static void initialize() {
     final InitializationSettings initializationSettings =
         InitializationSettings(
-      android: AndroidInitializationSettings("@mipmap/jci_logo"),
+      android: AndroidInitializationSettings("@mipmap/ic_nutz"),
       iOS: IOSInitializationSettings(
         onDidReceiveLocalNotification: onDidReceiveLocalNotification,
       ),

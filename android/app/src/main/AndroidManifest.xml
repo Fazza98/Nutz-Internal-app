@@ -8,7 +8,7 @@
     <uses-permission android:name="android.permission.RECEIVE_BOOT_COMPLETED" />
    <application
         android:label="Nutz"
-        android:icon="@mipmap/jci_logo">
+        android:icon="@mipmap/ic_nutz">
         <activity
             android:exported="true"
             android:requestLegacyExternalStorage="true"

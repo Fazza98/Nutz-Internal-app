@@ -1,4 +1,5 @@
 import 'package:flutter/cupertino.dart';
+import 'package:flutter/gestures.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:hexcolor/hexcolor.dart';
@@ -24,41 +25,41 @@ class _HomeState extends State<Home> {
   var controller = Get.put(sponsorController());
 
   var loadingFlag = 0;
-  var isLoading = true;
+  var isLoading = false;
 
   @override
   void initState() {
     super.initState();
 
-    getSponsorData();
+    // getSponsorData();
   }
 
-  getSponsorData() async {
-    List<SponsorModel> coSponsor = await SponsorService.getOurSponserData();
-    List<SponsorModel> poweredBy = await SponsorService.getSponserData();
+  // getSponsorData() async {
+  //   List<SponsorModel> coSponsor = await SponsorService.getOurSponserData();
+  //   List<SponsorModel> poweredBy = await SponsorService.getSponserData();
 
-    if (coSponsor.isNotEmpty) {
-      loadingFlag++;
-      controller.setVisible(true);
-    } else {
-      loadingFlag++;
-      controller.setVisible(false);
-    }
+  //   if (coSponsor.isNotEmpty) {
+  //     loadingFlag++;
+  //     controller.setVisible(true);
+  //   } else {
+  //     loadingFlag++;
+  //     controller.setVisible(false);
+  //   }
 
-    if (poweredBy.isNotEmpty) {
-      loadingFlag++;
-      controller.setMainSponsorVisible(true);
-    } else {
-      loadingFlag++;
-      controller.setMainSponsorVisible(false);
-    }
+  //   if (poweredBy.isNotEmpty) {
+  //     loadingFlag++;
+  //     controller.setMainSponsorVisible(true);
+  //   } else {
+  //     loadingFlag++;
+  //     controller.setMainSponsorVisible(false);
+  //   }
 
-    if (loadingFlag != 0) {
-      setState(() {
-        isLoading = false;
-      });
-    }
-  }
+  //   if (loadingFlag != 0) {
+  //     setState(() {
+  //       isLoading = false;
+  //     });
+  //   }
+  // }
 
   @override
   Widget build(BuildContext context) {
@@ -293,7 +294,7 @@ class _HomeState extends State<Home> {
             _space(60),
             Padding(
               padding: const EdgeInsets.symmetric(
-                horizontal: 10,
+                horizontal: 80,
               ),
               child: Row(
                 children: [
@@ -302,7 +303,7 @@ class _HomeState extends State<Home> {
                     child: InkWell(
                       onTap: () => Get.toNamed("/roh"),
                       child: Container(
-                        margin: EdgeInsets.fromLTRB(75, 0, 15, 10),
+                        // margin: EdgeInsets.fromLTRB(75, 0, 15, 10),
                         child: Column(
                           children: [
                             SvgPicture.asset(
@@ -331,7 +332,7 @@ class _HomeState extends State<Home> {
                         // Get.toNamed("/dashboard");
                       },
                       child: Container(
-                        margin: EdgeInsets.fromLTRB(15, 0, 75, 10),
+                        // margin: EdgeInsets.fromLTRB(15, 0, 75, 10),
                         // padding: EdgeInsets.symmetric(horizontal: 5, vertical: 5),
                         child: Column(
                           children: [
@@ -371,11 +372,13 @@ class _HomeState extends State<Home> {
             // SponsorData.otherSponsor(context),
             // _space(20)
             Padding(
-                padding: const EdgeInsets.symmetric(vertical: 30),
+                padding: const EdgeInsets.fromLTRB(10, 10, 10, 10),
                 child: Align(
                     alignment: Alignment.center,
                     child: SvgPicture.asset(
                       "assets/images/logo.svg",
+                      width: 65,
+                      height: 80,
                     ))),
           ],
         ),
@@ -403,7 +406,8 @@ Scaffold _loading() {
   return Scaffold(
     appBar: CustAppBar(titles.home).loadingAppBar(),
     body: Center(
-      child: CircularProgressIndicator(),
+      child: CircularProgressIndicator(
+          valueColor: AlwaysStoppedAnimation<Color>(Colors.black)),
     ),
   );
 }

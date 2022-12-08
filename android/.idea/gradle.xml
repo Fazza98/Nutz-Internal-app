@@ -1,30 +1,25 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
-  <component name="GradleMigrationSettings" migrationVersion="1" />
   <component name="GradleSettings">
     <option name="linkedExternalProjectsSettings">
       <GradleProjectSettings>
         <option name="testRunner" value="GRADLE" />
         <option name="distributionType" value="DEFAULT_WRAPPED" />
         <option name="externalProjectPath" value="$PROJECT_DIR$" />
-        <option name="gradleJvm" value="Android Studio java home" />
         <option name="modules">
           <set>
-            <option value="C:/src/flutter/.pub-cache/hosted/pub.dartlang.org/app_settings-4.1.1/android" />
-            <option value="C:/src/flutter/.pub-cache/hosted/pub.dartlang.org/firebase_core-1.10.0/android" />
-            <option value="C:/src/flutter/.pub-cache/hosted/pub.dartlang.org/firebase_dynamic_links-3.0.1/android" />
-            <option value="C:/src/flutter/.pub-cache/hosted/pub.dartlang.org/firebase_messaging-10.0.9/android" />
-            <option value="C:/src/flutter/.pub-cache/hosted/pub.dartlang.org/flutter_local_notifications-8.2.0/android" />
-            <option value="C:/src/flutter/.pub-cache/hosted/pub.dartlang.org/hexcolor-2.0.5/android" />
-            <option value="C:/src/flutter/.pub-cache/hosted/pub.dartlang.org/open_file-3.2.1/android" />
-            <option value="C:/src/flutter/.pub-cache/hosted/pub.dartlang.org/path_provider_android-2.0.6/android" />
-            <option value="C:/src/flutter/.pub-cache/hosted/pub.dartlang.org/permission_handler-8.3.0/android" />
-            <option value="C:/src/flutter/.pub-cache/hosted/pub.dartlang.org/url_launcher-6.0.12/android" />
+            <option value="$PROJECT_DIR$/../../flutter/.pub-cache/hosted/pub.dartlang.org/firebase_core-1.13.1/android" />
+            <option value="$PROJECT_DIR$/../../flutter/.pub-cache/hosted/pub.dartlang.org/firebase_messaging-11.2.11/android" />
+            <option value="$PROJECT_DIR$/../../flutter/.pub-cache/hosted/pub.dartlang.org/flutter_local_notifications-9.4.0/android" />
+            <option value="$PROJECT_DIR$/../../flutter/.pub-cache/hosted/pub.dartlang.org/hexcolor-2.0.6/android" />
+            <option value="$PROJECT_DIR$/../../flutter/.pub-cache/hosted/pub.dartlang.org/open_file-3.2.1/android" />
+            <option value="$PROJECT_DIR$/../../flutter/.pub-cache/hosted/pub.dartlang.org/path_provider_android-2.0.12/android" />
+            <option value="$PROJECT_DIR$/../../flutter/.pub-cache/hosted/pub.dartlang.org/permission_handler-8.3.0/android" />
+            <option value="$PROJECT_DIR$/../../flutter/.pub-cache/hosted/pub.dartlang.org/url_launcher_android-6.0.15/android" />
             <option value="$PROJECT_DIR$" />
             <option value="$PROJECT_DIR$/app" />
           </set>
         </option>
-        <option name="resolveModulePerSourceSet" value="false" />
       </GradleProjectSettings>
     </option>
   </component>
