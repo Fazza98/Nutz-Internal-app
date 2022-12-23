@@ -7,7 +7,7 @@ var lightBlue = '24B9EC';
 var darkBlue = '23346B';
 double _svgWidth = 35;
 
-class drawer extends StatelessWidget {
+class NavigationDrawer extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return SizedBox(
@@ -20,46 +20,27 @@ class drawer extends StatelessWidget {
                 shrinkWrap: true,
                 children: [
                   DrawerHeader(
-                      child: Padding(
-                    padding: EdgeInsets.all(20),
-                    child: Container(
-                      height: 40,
-                      width: 40,
-                      child: SvgPicture.asset(
-                        "assets/images/logo.svg",
+                    child: Padding(
+                      padding: EdgeInsets.all(20),
+                      child: Container(
+                        height: 40,
+                        width: 40,
+                        child: SvgPicture.asset(
+                          "assets/images/logo.svg",
+                        ),
                       ),
                     ),
-                  )),
-                  // about
-                  // ListTile(
-                  //   title: _listTile(titles.about),
-                  //   minLeadingWidth: 1,
-                  //   leading: _about,
-                  //   onTap: () {
-                  //     Get.back();
-                  //     Get.toNamed("/about");
-                  //   },
-                  // ),
+                  ),
                   // events
                   ListTile(
-                      title: _listTile(titles.event),
-                      minLeadingWidth: 1,
-                      leading: _events,
-                      onTap: () {
-                        Get.back();
-                        Get.toNamed("/events");
-                      }),
-                  // board member
-                  // ListTile(
-                  //   title: _listTile(titles.board_members),
-                  //   minLeadingWidth: 1,
-                  //   leading: _board_member,
-                  //   onTap: () {
-                  //     Get.back();
-                  //     Get.toNamed("/members", arguments: ["bm"]);
-                  //   },
-                  // ),
-                  // past president
+                    title: _listTile(titles.event),
+                    minLeadingWidth: 1,
+                    leading: _events,
+                    onTap: () {
+                      Get.back();
+                      Get.toNamed("/events");
+                    },
+                  ),
 
                   // member
                   ListTile(
@@ -105,32 +86,9 @@ class drawer extends StatelessWidget {
                       Get.toNamed("/roh");
                     },
                   ),
-                  ListTile(
-                    title: _listTile(titles.green_channel),
-                    minLeadingWidth: 1,
-                    leading: _dashboard,
-                    onTap: () {
-                      Get.back();
-                      Get.toNamed("/dashboard", arguments: ["pp"]);
-                    },
-                  ),
                 ],
               ),
             ),
-            // Text(
-            //   'Developed by',
-            //   style: TextStyle(
-            //     fontFamily: "pop-med",
-            //     fontSize: 11,
-            //   ),
-            // ),
-            // Container(
-            //   margin: EdgeInsets.all(10),
-            //   child: SvgPicture.asset(
-            //     "assets/images/logo.svg",
-            //     height: Get.height * 0.05,
-            //   ),
-            // ),
             SizedBox(
               height: Get.height * 0.08,
             )

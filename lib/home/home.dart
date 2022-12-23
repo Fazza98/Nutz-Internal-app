@@ -30,36 +30,7 @@ class _HomeState extends State<Home> {
   @override
   void initState() {
     super.initState();
-
-    // getSponsorData();
   }
-
-  // getSponsorData() async {
-  //   List<SponsorModel> coSponsor = await SponsorService.getOurSponserData();
-  //   List<SponsorModel> poweredBy = await SponsorService.getSponserData();
-
-  //   if (coSponsor.isNotEmpty) {
-  //     loadingFlag++;
-  //     controller.setVisible(true);
-  //   } else {
-  //     loadingFlag++;
-  //     controller.setVisible(false);
-  //   }
-
-  //   if (poweredBy.isNotEmpty) {
-  //     loadingFlag++;
-  //     controller.setMainSponsorVisible(true);
-  //   } else {
-  //     loadingFlag++;
-  //     controller.setMainSponsorVisible(false);
-  //   }
-
-  //   if (loadingFlag != 0) {
-  //     setState(() {
-  //       isLoading = false;
-  //     });
-  //   }
-  // }
 
   @override
   Widget build(BuildContext context) {
@@ -383,7 +354,7 @@ class _HomeState extends State<Home> {
           ],
         ),
       ),
-      drawer: drawer(),
+      drawer: NavigationDrawer(),
     );
   }
 

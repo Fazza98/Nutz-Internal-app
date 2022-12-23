@@ -89,6 +89,7 @@ class _ProfileState extends State<Profile> with TickerProviderStateMixin {
     List<PersonalModel> _personalList = [];
 
     for (var _mem in _prespData['response']['data']['info']) {
+      print(_mem['profile_pic']);
       NAME = _mem['user_name'];
       PROFILE_PIC = _mem['profile_pic'];
       ROLE = _mem['role'];

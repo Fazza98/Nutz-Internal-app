@@ -87,7 +87,7 @@ class _MainState extends State<Main> {
   Widget build(BuildContext context) {
     return Scaffold(
       body: Home(),
-      drawer: drawer(),
+      drawer: NavigationDrawer(),
     );
   }
 }
