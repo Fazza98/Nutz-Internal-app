@@ -1,4 +1,4 @@
-# Jci
+# Nutz
 
 <center>
     <img src="./assets/images/jci_logo.svg" width="200px" height="auto">
